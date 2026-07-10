@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Recording the execution DNA of AI agents — AgentPlane</title>
 <meta name="description" content="Why we built Chronicle around decision boundaries instead of framework-specific hooks, and how the Envelope format makes agent incidents reproducible.">
-<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../assets/favicon.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/style.css">
@@ -15,7 +15,7 @@
 <nav class="site-nav">
   <div class="container">
     <a href="../index.html" class="logo">
-      <img src="../assets/logo-mark.svg" alt="" class="logo-mark" width="24" height="24">
+      <img src="../assets/logo-mark.png" alt="" class="logo-mark" width="26" height="26">
       AgentPlane
     </a>
     <div class="nav-links">
@@ -81,7 +81,7 @@ assert session.captured_result("delete_file", 1)["blocked"] is True</code></pre>
 
   <p>That's the whole loop: annotate a boundary once, record an incident when it happens, replay it to understand what went wrong, fix the boundary, and cut-point test the fix against the exact conditions that caused the original failure — without ever calling a live model unless you explicitly ask to.</p>
 
-  <p>Chronicle is open source under MIT. The README walks through the financial-incident demos and a deletion-agent example end to end, including an interactive trace visualizer if you want to see the graph rather than read JSON.</p>
+  <p>Chronicle is open source. The README walks through the financial-incident demos and a deletion-agent example end to end, including an interactive trace visualizer if you want to see the graph rather than read JSON.</p>
 
   <div class="byline">
     <div class="byline-avatar">SK</div>

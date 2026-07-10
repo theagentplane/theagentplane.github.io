@@ -6,6 +6,9 @@ Static marketing site for the AgentPlane org — landing page, projects, blog ga
 
 ```
 agentplane-site/
+├── assets/
+│   ├── logo-mark.svg                   nav logo (paper-plane mark)
+│   └── favicon.svg                     browser tab icon
 ├── index.html                          landing page
 ├── projects.html                       Chronicle + tokenops detail
 ├── blog.html                           blog gallery (renders from data/posts.json)

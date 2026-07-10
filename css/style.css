@@ -91,15 +91,10 @@ a:hover { text-decoration: underline; }
 .logo:hover { text-decoration: none; }
 
 .logo-mark {
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
   flex-shrink: 0;
-  color: var(--accent);
-}
-
-.logo-sub {
-  color: var(--text-faint);
-  font-weight: 400;
+  display: block;
 }
 
 .nav-links {

@@ -4,102 +4,128 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Projects — AgentPlane</title>
-<meta name="description" content="Chronicle and tokenops — open-source tooling for agent observability and token infrastructure, built by AgentPlane.">
-<link rel="icon" href="assets/favicon.png" type="image/png">
+<meta name="description" content="Open-source tooling and reference architecture for agent observability, token infrastructure, and more — built by AgentPlane.">
+<link rel="canonical" href="https://theagentplane.github.io/projects.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://theagentplane.github.io/projects.html">
+<meta property="og:title" content="Projects — AgentPlane">
+<meta property="og:description" content="Open-source tooling for agent observability, token infrastructure, and more.">
+<meta property="og:image" content="https://theagentplane.github.io/assets/logo-mark.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Projects — AgentPlane">
+<meta name="twitter:description" content="Open-source tooling for agent observability, token infrastructure, and more.">
+<link rel="icon" href="assets/favicon.png" type="image/png" sizes="32x32">
+<link rel="icon" href="assets/favicon-64.png" type="image/png" sizes="64x64">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png" sizes="180x180">
+<link rel="icon" href="assets/icon-192.png" type="image/png" sizes="192x192">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="js/theme-init.js"></script>
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<nav class="site-nav">
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<nav class="site-nav" aria-label="Main">
   <div class="container">
     <a href="index.html" class="logo">
-      <img src="assets/logo-mark.png" alt="" class="logo-mark" width="26" height="26">
+      <img src="assets/logo-mark.png" alt="AgentPlane logo" class="logo-mark" width="32" height="32">
       AgentPlane
     </a>
-    <div class="nav-links">
+    <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav-menu" aria-label="Open menu">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
+    <div class="nav-links" id="site-nav-menu">
       <a href="index.html">Home</a>
-      <a href="projects.html" class="active">Projects</a>
-      <a href="blog.html">Blog</a>
+      <a href="projects.html" class="active" aria-current="page">Projects</a>
+      <a href="media.html">Media</a>
       <a href="about.html">About</a>
       <a href="https://github.com/theagentplane" class="btn btn-solid" target="_blank" rel="noopener">GitHub ↗</a>
     </div>
   </div>
 </nav>
 
+<main id="main-content">
+
 <header class="page-header">
   <div class="container">
     <span class="section-label">Projects</span>
-    <h1>Open-source tooling, built in production.</h1>
-    <p>Two projects, two different layers of the agentic stack: observability at runtime, and cost governance at the infrastructure layer.</p>
+    <h1>Open-source projects</h1>
+    <p>What we're building and shipping in the open.</p>
   </div>
 </header>
 
-<section id="chronicle">
+<section>
   <div class="container">
-    <div class="card" style="padding:40px;">
+    <div class="projects-layout projects-layout-page">
+      <nav class="project-index" id="project-index" aria-label="Browse projects alphabetically"></nav>
+      <div class="projects-panel">
+
+<section id="chronicle" class="project-detail">
+    <div class="card project-detail-card">
       <div class="card-top">
         <div style="display:flex; align-items:center; gap:14px;">
           <div class="card-icon" style="width:44px;height:44px;font-size:18px;">C</div>
           <div>
             <h3 style="margin-bottom:2px;">Chronicle</h3>
-            <span class="post-meta">Python</span>
+            <span class="stars" data-github-repo="theagentplane/chronicle" data-github-meta-tail="Python" hidden></span>
           </div>
         </div>
         <a href="https://github.com/theagentplane/chronicle" class="btn btn-ghost" target="_blank" rel="noopener">View repo ↗</a>
       </div>
 
-      <p style="font-size:16px; margin-top:8px;">Chronicle captures the execution DNA of your agents. It records granular decision states — model versions, retrieval snapshots, tool schemas, and environment context — enabling accurate traces that let you navigate your agentic terrain with absolute observability.</p>
+      <p style="font-size:16px; margin-top:8px;">Records decision-boundary state—LLM calls, tool invocations, routing—as immutable Envelopes. Includes a test bench for fixture replay and cut-point replay.</p>
 
-      <h4 style="margin-top:28px;">How it works</h4>
-      <p>Chronicle implements two complementary systems, built as a side execution graph that sits alongside your agent without modifying its framework topology:</p>
-      <ul style="color:var(--text-dim); font-size:14.5px; padding-left:20px; margin-bottom:20px;">
-        <li><strong style="color:var(--text);">Agent Data Recorder ("The Envelope")</strong> — captures flight data at decision boundaries: every LLM call, tool invocation, or routing decision gets serialized into an immutable, append-only Envelope with contextual metadata, input state, action/result, and graph linkage for retries.</li>
-        <li><strong style="color:var(--text);">Verification Test Bench</strong> — a two-layer testing model. Layer 1 replays static envelope fixtures for deterministic structural assertions without ever calling an LLM API. Layer 2 uses LLM-as-judge evaluation to validate generation quality — grounding, safety, refusal — where bitwise equality doesn't apply.</li>
-      </ul>
-      <p style="font-size:14.5px; color:var(--text-dim);">Production incidents get committed under <code style="font-family:var(--mono); background:var(--bg-elevated); border:1px solid var(--border); padding:2px 6px; border-radius:4px; color:var(--accent);">fixtures/traces/</code> as permanent regression tests — including shipped demos for a $9.8M refund misfire, a currency-mismatch invoice, and an oversized trade, each with a gated fix verified via cut-point replay.</p>
-
-      <h4 style="margin-top:28px;">Quick start</h4>
-      <pre style="background:var(--bg-elevated); border:1px solid var(--border); border-radius:8px; padding:16px 18px; overflow-x:auto;"><code style="font-family:var(--mono); font-size:13.5px; color:#32393f;">pip install -e ".[dev]"
-python scripts/run.py demo   # record → trace → replay, confirmed step by step
-pytest -v                    # full verification suite</code></pre>
+      <h4 style="margin-top:24px;">Quick start</h4>
+      <pre style="background:var(--bg-elevated); border:1px solid var(--border); border-radius:8px; padding:16px 18px; overflow-x:auto;"><code style="font-family:var(--mono); font-size:13.5px; color:var(--text-prose);">pip install -e ".[dev]"
+python scripts/run.py demo
+python scripts/run.py test</code></pre>
 
       <div class="tag-row" style="margin-top:20px;">
-        <span class="tag">@boundary decorator</span>
-        <span class="tag">Envelope format</span>
+        <span class="tag">@boundary</span>
+        <span class="tag">Envelope</span>
         <span class="tag">Cut-point replay</span>
-        <span class="tag">LangGraph integration</span>
-        <span class="tag">OpenInference / Arize Phoenix</span>
       </div>
+
+      <p style="margin-top:20px;">
+        <a href="https://github.com/theagentplane/chronicle" class="btn btn-solid" target="_blank" rel="noopener">View on GitHub ↗</a>
+        <a href="https://www.youtube.com/watch?v=Lc8zRh9muoY" class="btn btn-ghost" style="margin-left:10px;" target="_blank" rel="noopener">Watch the talk ↗</a>
+      </p>
     </div>
-  </div>
 </section>
 
-<section id="tokenops">
-  <div class="container">
-    <div class="card" style="padding:40px;">
+<section id="TokenOps" class="project-detail">
+    <div class="card project-detail-card">
       <div class="card-top">
         <div style="display:flex; align-items:center; gap:14px;">
           <div class="card-icon" style="width:44px;height:44px;font-size:18px;">T</div>
           <div>
-            <h3 style="margin-bottom:2px;">tokenops</h3>
-            <span class="post-meta">Reference architecture</span>
+            <h3 style="margin-bottom:2px;">TokenOps</h3>
+            <span class="stars" data-github-repo="theagentplane/tokenops-wiki" data-github-meta-tail="Wiki" hidden></span>
           </div>
         </div>
-        <a href="https://github.com/theagentplane/tokenops" class="btn btn-ghost" target="_blank" rel="noopener">View repo ↗</a>
+        <a href="https://github.com/theagentplane/tokenops-wiki" class="btn btn-ghost" target="_blank" rel="noopener">View repo ↗</a>
       </div>
 
-      <p style="font-size:16px; margin-top:8px;">An operational field guide and reference architecture for treating tokens as a first-class infrastructure resource. Built for the AI Engineer World's Fair 2026 (June 29 – July 2, San Francisco).</p>
+      <p style="font-size:16px; margin-top:8px;">A control plane alongside your agent (data plane). TokenOps measures spend as it accrues, attributes it to the right run and customer context, and enforces deterministic policies — before and after each model, tool, and delegation call. Gateways see requests; TokenOps governs the full run: loops, growing context, fan-out, and runaway cost.</p>
 
-      <h4 style="margin-top:28px;">The thesis</h4>
-      <p style="font-size:14.5px; color:var(--text-dim);">Traditional cloud cost controls — budgets, quotas, rate limits — are built for deterministic, bounded workloads where a request costs roughly the same every time. Agentic systems break that assumption: token consumption is stochastic, varies with model reasoning depth, retries, and tool-calling chains, and can spike unpredictably within a single session. tokenops proposes treating tokens the way infrastructure teams already treat compute and storage — with first-class observability, budgeting primitives, and governance built for variance rather than fighting it.</p>
+      <h4 style="margin-top:24px;">Explore</h4>
+      <p style="font-size:15px; color:var(--text-dim); margin-top:8px;">Architecture, comparison with LiteLLM/Portkey/Langfuse, and customer outcomes live in the wiki.</p>
+      <p style="margin-top:16px;">
+        <a href="https://github.com/theagentplane/tokenops-wiki" class="btn btn-solid" target="_blank" rel="noopener">Read the wiki ↗</a>
+        <a href="https://github.com/theagentplane/tokenops-wiki/blob/main/docs/comparison.md" class="btn btn-ghost" style="margin-left:10px;" target="_blank" rel="noopener">Comparison guide ↗</a>
+      </p>
 
       <div class="tag-row" style="margin-top:20px;">
-        <span class="tag">Cost governance</span>
-        <span class="tag">AI Engineer World's Fair 2026</span>
-        <span class="tag">Reference architecture</span>
+        <span class="tag">Run-aware governance</span>
+        <span class="tag">Control plane</span>
+        <span class="tag">Policy enforcement</span>
       </div>
+    </div>
+</section>
     </div>
   </div>
 </section>
@@ -107,24 +133,33 @@ pytest -v                    # full verification suite</code></pre>
 <section class="cta-band">
   <div class="container">
     <h2>Have a use case in mind?</h2>
-    <p>Both projects are open for issues, discussions, and PRs. If you're running agents in production and hitting these problems, we want to hear about it.</p>
-    <div class="cta-actions">
-      <a href="https://github.com/theagentplane" class="btn btn-solid" target="_blank" rel="noopener">Open an issue ↗</a>
-      <a href="about.html" class="btn btn-ghost">Contact us</a>
+    <p>Everything we ship is open source. Reach out on LinkedIn or explore the repos on GitHub.</p>
+    <div class="founders-cta">
+      <a href="https://www.linkedin.com/in/susheemkoul/" class="btn btn-ghost" target="_blank" rel="noopener">Susheem on LinkedIn ↗</a>
+      <a href="https://in.linkedin.com/in/tisha-chawla" class="btn btn-ghost" target="_blank" rel="noopener">Tisha on LinkedIn ↗</a>
     </div>
   </div>
 </section>
+
+</main>
 
 <footer>
   <div class="container">
     <div class="footer-left">© 2026 AgentPlane. Built by Susheem Koul &amp; Tisha Chawla.</div>
     <div class="footer-links">
       <a href="https://github.com/theagentplane" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/susheemkoul/" target="_blank" rel="noopener">Susheem</a>
+      <a href="https://in.linkedin.com/in/tisha-chawla" target="_blank" rel="noopener">Tisha</a>
       <a href="about.html">About</a>
-      <a href="blog.html">Blog</a>
+      <a href="media.html">Media</a>
     </div>
   </div>
 </footer>
+
+<script src="js/theme.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/github-stars.js"></script>
+<script src="js/projects.js"></script>
 
 </body>
 </html>

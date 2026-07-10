@@ -1,29 +1,35 @@
 # agentplane.dev
 
-Static marketing site for the AgentPlane org — landing page, projects, blog gallery, and about/team. No build step: plain HTML/CSS/JS, ready to deploy as-is.
+Static marketing site for the AgentPlane org — landing page, projects, media gallery, and about/team. No build step: plain HTML/CSS/JS, ready to deploy as-is.
 
 ## Structure
 
 ```
 agentplane-site/
 ├── assets/
-│   ├── logo-mark.png                   nav logo (from agentplanelogo.png)
+│   ├── logo-mark.png                   nav logo
 │   └── favicon.png                     browser tab icon
-├── index.html                          landing page
-├── projects.html                       Chronicle + tokenops detail
-├── blog.html                           blog gallery (renders from data/posts.json)
+├── index.html                          landing page (dynamic hero + media teaser)
+├── projects.html                       Chronicle + TokenOps detail
+├── media.html                          writing, talks & videos gallery
+├── blog.html                           redirect → media.html (legacy URL)
 ├── about.html                          team page
-├── blog/
-│   ├── chronicle-execution-dna.html    inline post
-│   └── tokens-as-infrastructure.html   inline post
+├── llms.txt                            AI-agent discovery index
+├── sitemap.xml                         search engine sitemap
+├── robots.txt                          crawl rules + llms.txt pointer
 ├── data/
-│   └── posts.json                      blog gallery data — internal + external posts
+│   ├── posts.json                      media gallery data
+│   └── hero.json                       homepage hero config (auto / pinned / manual)
 ├── js/
-│   └── blog.js                         fetches posts.json, renders post cards
+│   ├── media.js                        renders media gallery from posts.json
+│   ├── hero.js                         dynamic homepage hero
+│   ├── nav.js                          mobile nav toggle
+│   └── github-stars.js                 live star counts
 ├── css/
 │   └── style.css                       shared stylesheet
 └── claude-skills/
-    └── add-blog-post/SKILL.md          Claude skill for adding new posts (see below)
+    ├── add-media-item/SKILL.md         add writing, talks, or videos
+    └── add-blog-post/SKILL.md          deprecated alias → add-media-item
 ```
 
 ## Deploy to GitHub Pages — Option A (`theagentplane.github.io`)
@@ -69,24 +75,31 @@ This is worth doing regardless of public/private, and it's free on any plan. Two
 
 After this, changes to `main` must go through a PR that one of you approves — direct pushes to `main` are blocked even for the two of you, which is the standard way to get "only Tisha and I can approve changes" without touching who has repo access at all.
 
-## The blog gallery
+## The media gallery
 
-`blog.html` and the "From the blog" section on `index.html` don't contain hardcoded post markup — they fetch `data/posts.json` at load time and render cards from it (see `js/blog.js`), sorted newest-first by `date`. Each entry is either:
+`media.html` and the homepage media section fetch `data/posts.json` at runtime via `js/media.js`, sorted newest-first by `date`. Each entry has a **`format`**:
 
-- **`"type": "internal"`** — a post that lives on this site, e.g. `blog/chronicle-execution-dna.html`. `url` is a relative path.
-- **`"type": "external"`** — a link out to something published elsewhere (Substack, dev.to, LinkedIn, Medium, ...). `url` is the full external URL, and `source` sets the colored platform badge on the card. Unrecognized sources fall back to a neutral badge automatically.
+| `format` | What it covers |
+|----------|----------------|
+| `writing` | Articles linked externally (Substack, dev.to, LinkedIn, …) |
+| `talk` | Conference presentations and slide decks |
+| `video` | Recorded talks, demos, YouTube uploads |
 
-**Previewing locally:** `fetch()` of a local JSON file is blocked under `file://`, so double-clicking `index.html` will show "Couldn't load posts." Serve the folder instead:
+Filter tabs on `media.html` let visitors browse by format. The homepage hero (`js/hero.js` + `data/hero.json`) promotes the latest item automatically when `mode` is `"auto"`.
+
+**Previewing locally:** `fetch()` of local JSON is blocked under `file://`. Serve the folder instead:
+
 ```
 python3 -m http.server
 ```
-then open `http://localhost:8000`.
 
-### Adding a post
+then open `http://localhost:8000/media.html`.
 
-The `claude-skills/add-blog-post/SKILL.md` file in this repo is a ready-to-use Claude skill that does this for you — hand it raw text (or a draft) and it writes a new inline post + `posts.json` entry, or hand it an external link and it adds a gallery entry pointing out. To use it, copy the `claude-skills/add-blog-post/` folder to `.claude/skills/add-blog-post/` in your local checkout (it's shipped outside `.claude/` in this deliverable since dotfiles don't survive this handoff), then ask Claude to add a post and it'll pick up the skill automatically.
+### Adding media
 
-Doing it by hand: append an object to `data/posts.json` following the schema documented at the top of `SKILL.md` — for an internal post, also create the HTML file under `blog/` (copy `blog/chronicle-execution-dna.html` as a starting template).
+Use `claude-skills/add-media-item/SKILL.md` — hand it a talk URL, YouTube link, or published article URL and it adds the right `posts.json` entry.
+
+Doing it by hand: append to `data/posts.json` following the schema in that skill. All media links point to external URLs (Substack, dev.to, YouTube, etc.).
 
 ## Editing everything else
 

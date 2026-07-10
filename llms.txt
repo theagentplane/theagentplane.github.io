@@ -1,0 +1,29 @@
+# AgentPlane
+
+> Open-source infrastructure for teams running AI agents in production — replayable observability (Chronicle) and token governance (TokenOps). Built by Susheem Koul and Tisha Chawla.
+
+## Start here
+
+- [Home](https://theagentplane.github.io/): Latest video, projects, and media from the AgentPlane team
+- [Projects](https://theagentplane.github.io/projects.html): Chronicle and TokenOps — quick starts, repos, and tags
+- [Media](https://theagentplane.github.io/media.html): Writing, talks, and videos on agent infrastructure
+- [About](https://theagentplane.github.io/about.html): Team, mission, and contact via LinkedIn
+
+## Open source
+
+- [Chronicle on GitHub](https://github.com/theagentplane/chronicle): Decision-boundary capture, Envelopes, and cut-point replay for agents
+- [TokenOps on GitHub](https://github.com/theagentplane/tokenops-wiki): Run-aware token governance control plane — measure, attribute, and enforce policies per run
+- [AgentPlane org on GitHub](https://github.com/theagentplane): All repositories and issues
+
+## Featured media
+
+- [Your Agent Failed in Prod (video)](https://www.youtube.com/watch?v=Lc8zRh9muoY): Record-and-replay for autonomous agents — Chronicle walkthrough
+- [Your Agent Failed in Prod (article)](https://dev.to/tisha/your-agent-failed-in-prod-good-luck-reproducing-it-56ci): Why replayability beats bitwise determinism
+- [Why Agents Forget](https://dev.to/tisha/why-agents-forget-5b46): How memory works in AI agents and what it takes to make them learn
+- [From Validating Code to Evaluating Behavior](https://susheemk.substack.com/p/from-validating-code-to-evaluating): Rethinking testing for agentic systems
+
+## Optional
+
+- [Spec-Driven Development: When Structure Helps](https://dev.to/tisha/spec-driven-development-when-structure-helps-and-when-it-becomes-tax-1f66): SDD taxonomy and token economics for coding agents
+- [Beyond Prompt Caching](https://susheemk.substack.com/p/beyond-prompt-caching-architecting): Codebase perception and retrieval for coding agents
+- [Prompt Caching and Context Optimization](https://susheemk.substack.com/p/prompt-caching-and-context-optimization): KV cache reuse and prefix stability in agent workflows

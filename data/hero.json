@@ -1,0 +1,14 @@
+{
+  "mode": "auto",
+  "pinnedPostId": null,
+  "fallback": {
+    "eyebrow": "Latest video",
+    "headline": "Your Agent Failed in Prod. Good Luck Reproducing It.",
+    "lede": "Tisha and Susheem on record-and-replay for autonomous agents — why replayability beats bitwise determinism, and how Chronicle turns production failures into test cases you can re-run.",
+    "heroImage": "https://img.youtube.com/vi/Lc8zRh9muoY/maxresdefault.jpg",
+    "mediaBadge": "14 min · Video",
+    "primaryCta": { "label": "Watch on YouTube ↗", "href": "https://www.youtube.com/watch?v=Lc8zRh9muoY", "external": true },
+    "secondaryCta": { "label": "View Projects", "href": "projects.html" }
+  },
+  "override": null
+}

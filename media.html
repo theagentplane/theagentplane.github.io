@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Media — AgentPlane</title>
+<meta name="description" content="Writing, conference talks, and videos from Susheem Koul and Tisha Chawla on agent infrastructure, observability, and token governance.">
+<link rel="canonical" href="https://theagentplane.github.io/media.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://theagentplane.github.io/media.html">
+<meta property="og:title" content="Media — AgentPlane">
+<meta property="og:description" content="Writing, conference talks, and videos on agent infrastructure from the AgentPlane team.">
+<meta property="og:image" content="https://theagentplane.github.io/assets/logo-mark.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Media — AgentPlane">
+<meta name="twitter:description" content="Writing, conference talks, and videos on agent infrastructure from the AgentPlane team.">
+<link rel="icon" href="assets/favicon.png" type="image/png" sizes="32x32">
+<link rel="icon" href="assets/favicon-64.png" type="image/png" sizes="64x64">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png" sizes="180x180">
+<link rel="icon" href="assets/icon-192.png" type="image/png" sizes="192x192">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="js/theme-init.js"></script>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<nav class="site-nav" aria-label="Main">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <img src="assets/logo-mark.png" alt="AgentPlane logo" class="logo-mark" width="32" height="32">
+      AgentPlane
+    </a>
+    <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav-menu" aria-label="Open menu">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
+    <div class="nav-links" id="site-nav-menu">
+      <a href="index.html">Home</a>
+      <a href="projects.html">Projects</a>
+      <a href="media.html" class="active" aria-current="page">Media</a>
+      <a href="about.html">About</a>
+      <a href="https://github.com/theagentplane" class="btn btn-solid" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+  </div>
+</nav>
+
+<main id="main-content">
+
+<header class="page-header">
+  <div class="container">
+    <span class="section-label">Media</span>
+    <h1>Writing, talks &amp; videos.</h1>
+    <p>Articles, conference presentations, and recordings from Susheem and Tisha — on agent observability, replay testing, token infrastructure, and whatever we're building next.</p>
+  </div>
+</header>
+
+<section>
+  <div class="container">
+    <div class="media-filters" id="media-filters">
+      <button type="button" class="media-filter active" data-filter="all">All</button>
+      <button type="button" class="media-filter" data-filter="writing">Writing</button>
+      <button type="button" class="media-filter" data-filter="talk">Talks</button>
+      <button type="button" class="media-filter" data-filter="video">Videos</button>
+    </div>
+    <div id="media-list" class="media-card-grid"></div>
+  </div>
+</section>
+
+</main>
+
+<script src="js/theme.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/media.js"></script>
+<script>renderMediaList('media-list');</script>
+
+<footer>
+  <div class="container">
+    <div class="footer-left">© 2026 AgentPlane. Built by Susheem Koul &amp; Tisha Chawla.</div>
+    <div class="footer-links">
+      <a href="https://github.com/theagentplane" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/susheemkoul/" target="_blank" rel="noopener">Susheem</a>
+      <a href="https://in.linkedin.com/in/tisha-chawla" target="_blank" rel="noopener">Tisha</a>
+      <a href="about.html">About</a>
+      <a href="media.html">Media</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

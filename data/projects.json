@@ -1,0 +1,22 @@
+[
+  {
+    "id": "chronicle",
+    "name": "Chronicle",
+    "initial": "C",
+    "description": "Records decision-boundary state as Envelopes. Replay traces and regression-test agent runs.",
+    "tags": ["Python", "Observability"],
+    "github": "theagentplane/chronicle",
+    "accent": "chronicle",
+    "detailUrl": "projects.html#chronicle"
+  },
+  {
+    "id": "tokenops",
+    "name": "TokenOps",
+    "initial": "T",
+    "description": "Run-aware token governance control plane — measure spend, attribute to runs, and enforce policies in the call path.",
+    "tags": ["Governance", "Control plane"],
+    "github": "theagentplane/tokenops-wiki",
+    "accent": "tokenops",
+    "detailUrl": "projects.html#TokenOps"
+  }
+]

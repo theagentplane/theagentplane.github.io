@@ -4,47 +4,71 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About — AgentPlane</title>
-<meta name="description" content="AgentPlane is built by Susheem Koul and Tisha Chawla, two software engineers at Microsoft building infrastructure for the agentic AI era.">
-<link rel="icon" href="assets/favicon.png" type="image/png">
+<meta name="description" content="AgentPlane is an open-source startup built by Susheem Koul and Tisha Chawla — infrastructure for teams running AI agents in production.">
+<link rel="canonical" href="https://theagentplane.github.io/about.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://theagentplane.github.io/about.html">
+<meta property="og:title" content="About — AgentPlane">
+<meta property="og:description" content="Open-source startup building Chronicle and TokenOps for production AI agents.">
+<meta property="og:image" content="https://theagentplane.github.io/assets/logo-mark.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="About — AgentPlane">
+<meta name="twitter:description" content="Open-source startup building Chronicle and TokenOps for production AI agents.">
+<link rel="icon" href="assets/favicon.png" type="image/png" sizes="32x32">
+<link rel="icon" href="assets/favicon-64.png" type="image/png" sizes="64x64">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png" sizes="180x180">
+<link rel="icon" href="assets/icon-192.png" type="image/png" sizes="192x192">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="js/theme-init.js"></script>
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<nav class="site-nav">
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<nav class="site-nav" aria-label="Main">
   <div class="container">
     <a href="index.html" class="logo">
-      <img src="assets/logo-mark.png" alt="" class="logo-mark" width="26" height="26">
+      <img src="assets/logo-mark.png" alt="AgentPlane logo" class="logo-mark" width="32" height="32">
       AgentPlane
     </a>
-    <div class="nav-links">
+    <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav-menu" aria-label="Open menu">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
+    <div class="nav-links" id="site-nav-menu">
       <a href="index.html">Home</a>
       <a href="projects.html">Projects</a>
-      <a href="blog.html">Blog</a>
-      <a href="about.html" class="active">About</a>
+      <a href="media.html">Media</a>
+      <a href="about.html" class="active" aria-current="page">About</a>
       <a href="https://github.com/theagentplane" class="btn btn-solid" target="_blank" rel="noopener">GitHub ↗</a>
     </div>
   </div>
 </nav>
 
+<main id="main-content">
+
 <header class="page-header">
   <div class="container">
     <span class="section-label">About</span>
     <h1>Two engineers, building the layer agents need underneath them.</h1>
-    <p>AgentPlane started as a place to put the tooling we kept needing while shipping agents ourselves — observability that survives a framework change, and cost governance that assumes variance instead of fighting it.</p>
+    <p>AgentPlane is an open-source startup co-founded by Susheem Koul and Tisha Chawla. We build infrastructure for production AI agents and publish the work in the open.</p>
+    <p style="font-size:14px; color:var(--text-faint); margin-top:20px;">AgentPlane is an independent company. It is not affiliated with or endorsed by Microsoft. Founders' employer titles are listed for identification only.</p>
   </div>
 </header>
 
 <section>
   <div class="container">
+    <span class="section-label">Team</span>
     <div class="team-grid">
 
       <div class="team-card">
-        <div class="team-avatar">SK</div>
+        <img class="team-avatar" src="assets/team/susheem-koul.jpg" alt="Susheem Koul" width="96" height="96" loading="lazy" decoding="async">
         <h3>Susheem Koul</h3>
         <div class="team-role">Co-founder · Software Engineer at Microsoft</div>
-        <p>Builds Chronicle and tokenops. Based in Hyderabad, background from BITS Pilani. Focused on making agent failures reproducible rather than anecdotal.</p>
+        <p>Software engineer at Microsoft in Hyderabad; previously SDE at OYO. BITS Pilani alum. Builds open-source agent infrastructure — focused on making agent failures reproducible and token spend governable in production.</p>
         <div class="team-links">
           <a href="https://github.com/susheem-k" target="_blank" rel="noopener">GitHub ↗</a>
           <a href="https://www.linkedin.com/in/susheemkoul/" target="_blank" rel="noopener">LinkedIn ↗</a>
@@ -52,10 +76,10 @@
       </div>
 
       <div class="team-card">
-        <div class="team-avatar">TC</div>
+        <img class="team-avatar" src="assets/team/tisha-chawla.jpg" alt="Tisha Chawla" width="96" height="96" loading="lazy" decoding="async">
         <h3>Tisha Chawla</h3>
         <div class="team-role">Co-founder · Software Engineer at Microsoft</div>
-        <p>Software engineer working on AI systems, based in Hyderabad, alum of Vellore Institute of Technology. Writes on agent memory, latency, and AI engineering practice.</p>
+        <p>Software engineer at Microsoft building data platform and AI systems infrastructure in Enterprise Commerce — Azure ETL pipelines, full-stack internal tools, and MCP integration for agent tooling. Research background in NLP and LLM evaluation; VIT alum and Google Women Engineers Scholar. Based in Hyderabad.</p>
         <div class="team-links">
           <a href="https://github.com/tishachawla-jg" target="_blank" rel="noopener">GitHub ↗</a>
           <a href="https://in.linkedin.com/in/tisha-chawla" target="_blank" rel="noopener">LinkedIn ↗</a>
@@ -69,24 +93,31 @@
 <section class="cta-band">
   <div class="container">
     <h2>Want to build with us?</h2>
-    <p>Both projects are open source and actively developed. Issues, discussions, and PRs are the fastest way to reach us.</p>
-    <div class="cta-actions">
-      <a href="https://github.com/theagentplane" class="btn btn-solid" target="_blank" rel="noopener">Visit the org ↗</a>
-      <a href="projects.html" class="btn btn-ghost">See the projects</a>
+    <p>Everything we ship is open source. Message us on LinkedIn — issues and PRs welcome on GitHub.</p>
+    <div class="founders-cta">
+      <a href="https://www.linkedin.com/in/susheemkoul/" class="btn btn-ghost" target="_blank" rel="noopener">Susheem on LinkedIn ↗</a>
+      <a href="https://in.linkedin.com/in/tisha-chawla" class="btn btn-ghost" target="_blank" rel="noopener">Tisha on LinkedIn ↗</a>
     </div>
   </div>
 </section>
+
+</main>
 
 <footer>
   <div class="container">
     <div class="footer-left">© 2026 AgentPlane. Built by Susheem Koul &amp; Tisha Chawla.</div>
     <div class="footer-links">
       <a href="https://github.com/theagentplane" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/susheemkoul/" target="_blank" rel="noopener">Susheem</a>
+      <a href="https://in.linkedin.com/in/tisha-chawla" target="_blank" rel="noopener">Tisha</a>
       <a href="about.html">About</a>
-      <a href="blog.html">Blog</a>
+      <a href="media.html">Media</a>
     </div>
   </div>
 </footer>
+
+<script src="js/theme.js"></script>
+<script src="js/nav.js"></script>
 
 </body>
 </html>

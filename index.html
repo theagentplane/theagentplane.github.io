@@ -3,57 +3,97 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AgentPlane — Infrastructure for the agentic AI era</title>
-<meta name="description" content="AgentPlane builds field-tested tooling and reference architecture for teams running AI agents in production — execution tracing, replay testing, and token infrastructure.">
-<link rel="icon" href="assets/favicon.png" type="image/png">
+<title>AgentPlane — Agent infrastructure for production teams</title>
+<meta name="description" content="AgentPlane builds open-source infrastructure for teams running AI agents in production — observability, governance, and more.">
+<link rel="canonical" href="https://theagentplane.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://theagentplane.github.io/">
+<meta property="og:title" content="AgentPlane — Agent infrastructure for production teams">
+<meta property="og:description" content="Open-source infrastructure for the agentic stack — replayable observability, token governance, and more.">
+<meta property="og:image" content="https://img.youtube.com/vi/Lc8zRh9muoY/maxresdefault.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Your Agent Failed in Prod — AgentPlane">
+<meta name="twitter:description" content="Watch Tisha and Susheem on record-and-replay for AI agents — Chronicle and production-grade agent debugging.">
+<meta name="twitter:image" content="https://img.youtube.com/vi/Lc8zRh9muoY/maxresdefault.jpg">
+<link rel="icon" href="assets/favicon.png" type="image/png" sizes="32x32">
+<link rel="icon" href="assets/favicon-64.png" type="image/png" sizes="64x64">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png" sizes="180x180">
+<link rel="icon" href="assets/icon-192.png" type="image/png" sizes="192x192">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="js/theme-init.js"></script>
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<nav class="site-nav">
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<nav class="site-nav" aria-label="Main">
   <div class="container">
     <a href="index.html" class="logo">
-      <img src="assets/logo-mark.png" alt="" class="logo-mark" width="26" height="26">
+      <img src="assets/logo-mark.png" alt="AgentPlane logo" class="logo-mark" width="32" height="32">
       AgentPlane
     </a>
-    <div class="nav-links">
-      <a href="index.html" class="active">Home</a>
+    <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav-menu" aria-label="Open menu">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
+    <div class="nav-links" id="site-nav-menu">
+      <a href="index.html" class="active" aria-current="page">Home</a>
       <a href="projects.html">Projects</a>
-      <a href="blog.html">Blog</a>
+      <a href="media.html">Media</a>
       <a href="about.html">About</a>
       <a href="https://github.com/theagentplane" class="btn btn-solid" target="_blank" rel="noopener">GitHub ↗</a>
     </div>
   </div>
 </nav>
 
+<main id="main-content">
+
 <header class="hero">
+  <div class="hero-grid" aria-hidden="true"></div>
   <div class="grid-fade"></div>
-  <div class="container" style="position:relative; z-index:1;">
-    <div class="eyebrow">Two engineers. Two open-source projects.</div>
-    <h1>Infrastructure for the agentic AI era.</h1>
-    <p class="lede">AgentPlane builds field-tested tooling and reference architecture for teams running AI agents in production — from execution tracing at the decision boundary to treating tokens as a first-class infrastructure resource.</p>
-    <div class="hero-actions">
-      <a href="projects.html" class="btn btn-solid">View Projects</a>
-      <a href="blog.html" class="btn btn-ghost">Read the Blog</a>
+  <div class="container" style="position:relative; z-index:2;">
+    <div id="hero-content" class="hero-layout">
+      <div class="hero-copy">
+        <div class="eyebrow">Latest video</div>
+        <h1>Your Agent Failed in Prod. Good Luck Reproducing It.</h1>
+        <p class="lede">Tisha and Susheem on record-and-replay for autonomous agents — why replayability beats bitwise determinism, and how Chronicle turns production failures into test cases you can re-run.</p>
+        <div class="hero-actions">
+          <a href="https://www.youtube.com/watch?v=Lc8zRh9muoY" class="btn btn-solid" target="_blank" rel="noopener">Watch on YouTube ↗</a>
+          <a href="projects.html" class="btn btn-ghost">View Projects</a>
+        </div>
+      </div>
+      <a class="hero-media" href="https://www.youtube.com/watch?v=Lc8zRh9muoY" target="_blank" rel="noopener" aria-label="Watch on YouTube">
+        <img src="https://img.youtube.com/vi/Lc8zRh9muoY/maxresdefault.jpg" alt="Thumbnail: Your Agent Failed in Prod. Good Luck Reproducing It." width="560" height="315" loading="eager" decoding="async" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/Lc8zRh9muoY/hqdefault.jpg'">
+        <span class="hero-media-badge">14 min · Video</span>
+      </a>
     </div>
     <div class="stat-row">
-      <div>
-        <div class="stat-num">2</div>
+      <a href="projects.html" class="stat-card">
+        <div class="stat-num" id="stat-project-count">—</div>
         <div class="stat-label">Open-source projects</div>
-      </div>
-      <div>
-        <div class="stat-num">2</div>
-        <div class="stat-label">Engineers</div>
-      </div>
-      <div>
-        <div class="stat-num">2026</div>
-        <div class="stat-label">Founded</div>
+      </a>
+      <a href="media.html" class="stat-card">
+        <div class="stat-num" id="stat-post-count">—</div>
+        <div class="stat-label">Published pieces</div>
+      </a>
+      <div class="stat-card">
+        <div class="stat-num" id="stat-github-stars">—</div>
+        <div class="stat-label">GitHub stars</div>
       </div>
     </div>
   </div>
 </header>
+
+<section class="section-muted">
+  <div class="container mission-block">
+    <span class="section-label">Our mission</span>
+    <p class="mission-statement">We build in public as we learn about agentic AI development — and contribute to the open-source community with tools teams can use to build and govern production agentic apps.</p>
+    <p class="mission-support">Observability, token governance, and whatever the agentic stack needs next — shipped in the open as we build.</p>
+  </div>
+</section>
 
 <section>
   <div class="container">
@@ -64,65 +104,53 @@
       </div>
       <a href="projects.html" class="see-all">View all projects →</a>
     </div>
-    <div class="card-grid">
-
-      <div class="card">
-        <div class="card-top">
-          <div class="card-icon">C</div>
-        </div>
-        <h3>Chronicle</h3>
-        <p>Captures the execution DNA of your agents — recording model versions, retrieval snapshots, tool schemas, and environment context at every decision boundary, so you can replay and regression-test agent incidents deterministically.</p>
-        <div class="tag-row">
-          <span class="tag">Python</span>
-          <span class="tag">Observability</span>
-          <span class="tag">LangGraph</span>
-        </div>
-        <div class="card-links">
-          <a href="projects.html#chronicle">Learn more →</a>
-          <a href="https://github.com/theagentplane/chronicle" target="_blank" rel="noopener">GitHub ↗</a>
-        </div>
+    <div class="projects-layout">
+      <nav class="project-index" id="home-project-index" aria-label="Browse projects alphabetically"></nav>
+      <div id="home-projects" class="projects-panel card-grid">
+        <p style="font-family:var(--mono); font-size:13px; color:var(--text-faint); grid-column:1/-1;">Loading…</p>
       </div>
-
-      <div class="card">
-        <div class="card-top">
-          <div class="card-icon">T</div>
-        </div>
-        <h3>tokenops</h3>
-        <p>An operational field guide and reference architecture for treating tokens as a first-class infrastructure resource — built for teams whose cloud cost controls break down in stochastic, LLM-driven environments.</p>
-        <div class="tag-row">
-          <span class="tag">Reference Architecture</span>
-          <span class="tag">Cost Governance</span>
-        </div>
-        <div class="card-links">
-          <a href="projects.html#tokenops">Learn more →</a>
-          <a href="https://github.com/theagentplane/tokenops" target="_blank" rel="noopener">GitHub ↗</a>
-        </div>
-      </div>
-
     </div>
+  </div>
+</section>
+
+<section class="section-muted">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <span class="section-label">Media</span>
+        <h2>Writing, talks &amp; videos</h2>
+      </div>
+      <a href="media.html" class="see-all">View all →</a>
+    </div>
+    <div id="home-post-preview" class="media-card-grid"></div>
   </div>
 </section>
 
 <section>
   <div class="container">
-    <div class="section-head">
-      <div>
-        <span class="section-label">Writing</span>
-        <h2>From the blog</h2>
+    <div class="founders-strip">
+      <div class="founders-strip-copy">
+        <h3>Built by Susheem &amp; Tisha</h3>
+        <p>Co-founders and software engineers at Microsoft, building agent infrastructure in the open.</p>
       </div>
-      <a href="blog.html" class="see-all">View all posts →</a>
+      <div class="founders-avatars">
+        <a href="https://www.linkedin.com/in/susheemkoul/" class="founder-pill" target="_blank" rel="noopener">
+          <img class="founder-pill-avatar" src="assets/team/susheem-koul.jpg" alt="" width="28" height="28" loading="lazy" decoding="async">
+          Susheem
+        </a>
+        <a href="https://in.linkedin.com/in/tisha-chawla" class="founder-pill" target="_blank" rel="noopener">
+          <img class="founder-pill-avatar" src="assets/team/tisha-chawla.jpg" alt="" width="28" height="28" loading="lazy" decoding="async">
+          Tisha
+        </a>
+      </div>
     </div>
-    <div id="home-post-preview" class="post-list"></div>
   </div>
 </section>
 
-<script src="js/blog.js"></script>
-<script>renderPostList('home-post-preview', 2);</script>
-
 <section class="cta-band">
   <div class="container">
-    <h2>Built in the open</h2>
-    <p>Committed fixtures and reproducible demos. Clone it, break it, send a PR.</p>
+    <h2>Open source, built for production teams</h2>
+    <p>Browse the repos, run the demos, or explore our writing, talks, and videos.</p>
     <div class="cta-actions">
       <a href="https://github.com/theagentplane" class="btn btn-solid" target="_blank" rel="noopener">Browse the org ↗</a>
       <a href="about.html" class="btn btn-ghost">Meet the team</a>
@@ -130,16 +158,28 @@
   </div>
 </section>
 
+</main>
+
 <footer>
   <div class="container">
     <div class="footer-left">© 2026 AgentPlane. Built by Susheem Koul &amp; Tisha Chawla.</div>
     <div class="footer-links">
       <a href="https://github.com/theagentplane" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/susheemkoul/" target="_blank" rel="noopener">Susheem</a>
+      <a href="https://in.linkedin.com/in/tisha-chawla" target="_blank" rel="noopener">Tisha</a>
       <a href="about.html">About</a>
-      <a href="blog.html">Blog</a>
+      <a href="media.html">Media</a>
     </div>
   </div>
 </footer>
+
+<script src="js/theme.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/github-stars.js"></script>
+<script src="js/projects.js"></script>
+<script src="js/media.js"></script>
+<script src="js/hero.js"></script>
+<script>renderMediaList('home-post-preview', 3);</script>
 
 </body>
 </html>

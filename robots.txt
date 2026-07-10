@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+# llms.txt: https://theagentplane.github.io/llms.txt
+
+Sitemap: https://theagentplane.github.io/sitemap.xml

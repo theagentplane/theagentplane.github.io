@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AgentPlane — Infrastructure for the agentic AI era</title>
+<meta name="description" content="AgentPlane builds field-tested tooling and reference architecture for teams running AI agents in production — execution tracing, replay testing, and token infrastructure.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22><circle cx=%225%22 cy=%2219%22 r=%222.4%22 fill=%22%233563e9%22/><circle cx=%2219%22 cy=%2219%22 r=%222.4%22 fill=%22%233563e9%22/><circle cx=%2212%22 cy=%225%22 r=%222.4%22 fill=%22%233563e9%22/><path d=%22M12 7.4L6.3 17M12 7.4L17.7 17M7.2 19h9.6%22 stroke=%22%233563e9%22 stroke-width=%221.4%22/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <svg class="logo-mark" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="5" cy="19" r="2.4" fill="currentColor"/>
+        <circle cx="19" cy="19" r="2.4" fill="currentColor"/>
+        <circle cx="12" cy="5" r="2.4" fill="currentColor"/>
+        <path d="M12 7.4L6.3 17M12 7.4L17.7 17M7.2 19h9.6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+      </svg>
+      agentplane<span class="logo-sub">.dev</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="projects.html">Projects</a>
+      <a href="blog.html">Blog</a>
+      <a href="about.html">About</a>
+      <a href="https://github.com/theagentplane" class="btn btn-solid" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="grid-fade"></div>
+  <div class="container" style="position:relative; z-index:1;">
+    <div class="eyebrow">Two engineers. Two open-source projects.</div>
+    <h1>Infrastructure for the agentic AI era.</h1>
+    <p class="lede">AgentPlane builds field-tested tooling and reference architecture for teams running AI agents in production — from execution tracing at the decision boundary to treating tokens as a first-class infrastructure resource.</p>
+    <div class="hero-actions">
+      <a href="projects.html" class="btn btn-solid">View Projects</a>
+      <a href="blog.html" class="btn btn-ghost">Read the Blog</a>
+    </div>
+    <div class="stat-row">
+      <div>
+        <div class="stat-num">2</div>
+        <div class="stat-label">Open-source projects</div>
+      </div>
+      <div>
+        <div class="stat-num">2</div>
+        <div class="stat-label">Engineers</div>
+      </div>
+      <div>
+        <div class="stat-num">MIT</div>
+        <div class="stat-label">Licensed</div>
+      </div>
+      <div>
+        <div class="stat-num">2026</div>
+        <div class="stat-label">Founded</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <span class="section-label">Projects</span>
+        <h2>What we're building</h2>
+      </div>
+      <a href="projects.html" class="see-all">View all projects →</a>
+    </div>
+    <div class="card-grid">
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-icon">C</div>
+          <span class="stars">★ 2 stars</span>
+        </div>
+        <h3>Chronicle</h3>
+        <p>Captures the execution DNA of your agents — recording model versions, retrieval snapshots, tool schemas, and environment context at every decision boundary, so you can replay and regression-test agent incidents deterministically.</p>
+        <div class="tag-row">
+          <span class="tag">Python</span>
+          <span class="tag">Observability</span>
+          <span class="tag">LangGraph</span>
+        </div>
+        <div class="card-links">
+          <a href="projects.html#chronicle">Learn more →</a>
+          <a href="https://github.com/theagentplane/chronicle" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-icon">T</div>
+          <span class="stars">★ 1 star</span>
+        </div>
+        <h3>tokenops</h3>
+        <p>An operational field guide and reference architecture for treating tokens as a first-class infrastructure resource — built for teams whose cloud cost controls break down in stochastic, LLM-driven environments.</p>
+        <div class="tag-row">
+          <span class="tag">Reference Architecture</span>
+          <span class="tag">Cost Governance</span>
+        </div>
+        <div class="card-links">
+          <a href="projects.html#tokenops">Learn more →</a>
+          <a href="https://github.com/theagentplane/tokenops" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <span class="section-label">Writing</span>
+        <h2>From the blog</h2>
+      </div>
+      <a href="blog.html" class="see-all">View all posts →</a>
+    </div>
+    <div id="home-post-preview" class="post-list"></div>
+  </div>
+</section>
+
+<script src="js/blog.js"></script>
+<script>renderPostList('home-post-preview', 2);</script>
+
+<section class="cta-band">
+  <div class="container">
+    <h2>Built in the open</h2>
+    <p>Every project ships as MIT-licensed source with committed fixtures and reproducible demos. Clone it, break it, send a PR.</p>
+    <div class="cta-actions">
+      <a href="https://github.com/theagentplane" class="btn btn-solid" target="_blank" rel="noopener">Browse the org ↗</a>
+      <a href="about.html" class="btn btn-ghost">Meet the team</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-left">© 2026 AgentPlane. Built by Susheem Koul &amp; Tisha Chawla.</div>
+    <div class="footer-links">
+      <a href="https://github.com/theagentplane" target="_blank" rel="noopener">GitHub</a>
+      <a href="about.html">About</a>
+      <a href="blog.html">Blog</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

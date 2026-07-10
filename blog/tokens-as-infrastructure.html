@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tokens as infrastructure — AgentPlane</title>
+<meta name="description" content="Traditional cloud cost controls assume deterministic, bounded workloads. Agentic systems violate that assumption — here's what tokenops proposes instead.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22><circle cx=%225%22 cy=%2219%22 r=%222.4%22 fill=%22%233563e9%22/><circle cx=%2219%22 cy=%2219%22 r=%222.4%22 fill=%22%233563e9%22/><circle cx=%2212%22 cy=%225%22 r=%222.4%22 fill=%22%233563e9%22/><path d=%22M12 7.4L6.3 17M12 7.4L17.7 17M7.2 19h9.6%22 stroke=%22%233563e9%22 stroke-width=%221.4%22/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="container">
+    <a href="../index.html" class="logo">
+      <svg class="logo-mark" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="5" cy="19" r="2.4" fill="currentColor"/>
+        <circle cx="19" cy="19" r="2.4" fill="currentColor"/>
+        <circle cx="12" cy="5" r="2.4" fill="currentColor"/>
+        <path d="M12 7.4L6.3 17M12 7.4L17.7 17M7.2 19h9.6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+      </svg>
+      agentplane<span class="logo-sub">.dev</span>
+    </a>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="../projects.html">Projects</a>
+      <a href="../blog.html" class="active">Blog</a>
+      <a href="../about.html">About</a>
+      <a href="https://github.com/theagentplane" class="btn btn-solid" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+  </div>
+</nav>
+
+<header class="article-header">
+  <div class="container">
+    <a href="../blog.html" style="font-family:var(--mono); font-size:13px; color:var(--text-faint);">← Back to blog</a>
+    <h1 style="margin-top:20px;">Tokens as infrastructure: why cost controls break in stochastic systems</h1>
+    <div class="article-meta">
+      <span>Susheem Koul</span>
+      <span>·</span>
+      <span>June 16, 2026</span>
+      <span>·</span>
+      <span>5 min read</span>
+      <span>·</span>
+      <span>tokenops</span>
+    </div>
+  </div>
+</header>
+
+<article class="article-body">
+
+  <p>Every cloud cost control you've ever configured — budgets, quotas, autoscaling caps, rate limits — was designed for workloads where a request costs roughly the same every time. A web server handles a GET request in a predictable number of CPU cycles. A batch job processes a known number of rows. You can set a budget alert at 80% of expected spend and trust it means something.</p>
+
+  <p>Agentic systems don't behave that way, and pretending they do is why teams get blindsided by token spend. That's the starting premise behind <a href="../projects.html#tokenops">tokenops</a>, the field guide we're building for the AI Engineer World's Fair 2026.</p>
+
+  <h2>Why the old model breaks</h2>
+  <p>A single agent session can vary in cost by an order of magnitude depending on factors that have nothing to do with the input size: how many reasoning steps the model decides to take, whether a tool call fails and triggers a retry loop, whether the agent decides to fan out into sub-agents, or whether a longer context window gets pulled in because a retrieval step returned more chunks than usual. None of that is visible from the request shape alone — it only resolves at execution time, and it can compound across a multi-turn conversation.</p>
+
+  <p>Treat that like a deterministic workload and one of two things happens. Set your budget conservatively and you throttle legitimate usage during normal variance. Set it loosely and a single misbehaving session — an agent stuck in a retry loop, or a prompt injection that convinces it to over-explain — can burn through a monthly budget in an afternoon.</p>
+
+  <h2>The reframe: tokens as infrastructure</h2>
+  <p>tokenops' position is that token consumption deserves the same operational maturity that compute and storage got a decade ago: first-class observability, budgeting primitives built for variance rather than fighting it, and governance that acts at the right layer — per-session, per-agent, per-tool-call — rather than a single blunt monthly cap.</p>
+
+  <p>Concretely, that means treating a token budget less like a bank account balance and more like a rate limiter with burst allowance: expect variance, instrument for it, and gate on the outliers rather than the average. It also means cost attribution needs to survive multi-agent fan-out — if agent A spawns agents B and C, the spend has to roll up in a way that's still legible when you're debugging three weeks later.</p>
+
+  <h2>What's in the guide</h2>
+  <p>tokenops is written as an operational field guide rather than a library — the goal is a reference architecture you can adapt, not a package you install. It covers the failure modes we've hit treating agent workloads like traditional cloud workloads, and what a token-aware infrastructure layer looks like instead.</p>
+
+  <p>It's still early and evolving ahead of the AI Engineer World's Fair 2026 (June 29 – July 2, San Francisco) — if you're running agents in production and have hit these problems yourself, the repo is open for issues and PRs.</p>
+
+  <div class="byline">
+    <div class="byline-avatar">SK</div>
+    <div>
+      <div class="byline-name">Susheem Koul</div>
+      <div class="byline-role">Co-founder, AgentPlane · Software Engineer at Microsoft</div>
+    </div>
+  </div>
+
+</article>
+
+<footer>
+  <div class="container">
+    <div class="footer-left">© 2026 AgentPlane. Built by Susheem Koul &amp; Tisha Chawla.</div>
+    <div class="footer-links">
+      <a href="https://github.com/theagentplane" target="_blank" rel="noopener">GitHub</a>
+      <a href="../about.html">About</a>
+      <a href="../blog.html">Blog</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+[
+  {
+    "id": "chronicle-execution-dna",
+    "title": "Recording the execution DNA of AI agents",
+    "excerpt": "Why we built Chronicle around decision boundaries instead of framework-specific hooks, and how the Envelope format makes agent incidents reproducible.",
+    "date": "2026-06-20",
+    "author": "Susheem Koul",
+    "readTime": "6 min read",
+    "tags": ["Chronicle", "Observability"],
+    "type": "internal",
+    "url": "blog/chronicle-execution-dna.html",
+    "source": "AgentPlane"
+  },
+  {
+    "id": "tokens-as-infrastructure",
+    "title": "Tokens as infrastructure: why cost controls break in stochastic systems",
+    "excerpt": "Traditional cloud cost controls assume deterministic, bounded workloads. Agentic systems violate that assumption — here's what tokenops proposes instead.",
+    "date": "2026-06-16",
+    "author": "Susheem Koul",
+    "readTime": "5 min read",
+    "tags": ["tokenops", "Infrastructure"],
+    "type": "internal",
+    "url": "blog/tokens-as-infrastructure.html",
+    "source": "AgentPlane"
+  }
+]

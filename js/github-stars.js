@@ -1,5 +1,5 @@
 /* ============================================================
-   AgentPlane — live GitHub star counts
+   AgentPlane - live GitHub star counts
    Fetches public repo stats from the GitHub API on page load.
    Cached in sessionStorage for 30 minutes to stay within
    unauthenticated rate limits (60 req/hr per IP).

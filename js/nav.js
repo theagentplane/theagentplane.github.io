@@ -1,5 +1,5 @@
 /* ============================================================
-   AgentPlane — mobile navigation toggle
+   AgentPlane - mobile navigation toggle
    Include on every page after the nav markup.
    ============================================================ */
 

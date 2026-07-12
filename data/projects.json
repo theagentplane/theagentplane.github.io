@@ -13,7 +13,7 @@
     "id": "tokenops",
     "name": "TokenOps",
     "initial": "T",
-    "description": "Run-aware token governance control plane — measure spend, attribute to runs, and enforce policies in the call path.",
+    "description": "Run-aware token governance control plane: measure spend, attribute to runs, and enforce policies in the call path.",
     "tags": ["Governance", "Control plane"],
     "github": "theagentplane/tokenops-wiki",
     "accent": "tokenops",

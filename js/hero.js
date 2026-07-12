@@ -1,12 +1,12 @@
 /* ============================================================
-   AgentPlane — dynamic homepage hero
+   AgentPlane - dynamic homepage hero
    Loads data/hero.json + data/posts.json and renders the hero
    band on index.html.
 
    Modes (hero.json):
-     auto   — newest post by date, or pinnedPostId if set
-     pinned — post matching pinnedPostId
-     manual — hero.json override object
+     auto   - newest post by date, or pinnedPostId if set
+     pinned - post matching pinnedPostId
+     manual - hero.json override object
 
    Usage:
      <div id="hero-content">…fallback HTML…</div>
@@ -183,16 +183,16 @@ async function agentplaneHeroRenderStats(postCount, projects) {
     : [];
 
   if (!repos.length || typeof agentplaneLoadStarCounts !== 'function') {
-    starsEl.textContent = '—';
+    starsEl.textContent = '-';
     return;
   }
 
   try {
     const counts = await agentplaneLoadStarCounts(repos);
     const total = repos.reduce((sum, repo) => sum + (counts[repo] || 0), 0);
-    starsEl.textContent = total > 0 ? total.toLocaleString() : '—';
+    starsEl.textContent = total > 0 ? total.toLocaleString() : '-';
   } catch {
-    starsEl.textContent = '—';
+    starsEl.textContent = '-';
   }
 }
 
@@ -213,7 +213,7 @@ async function renderHero() {
     await agentplaneHeroRenderStats(posts.length, projectsRaw);
   } catch (err) {
     console.error(
-      'AgentPlane: could not load hero. Serve the site with a local server — fetch() of local JSON is blocked under file://.',
+      'AgentPlane: could not load hero. Serve the site with a local server; fetch() of local JSON is blocked under file://.',
       err
     );
   }

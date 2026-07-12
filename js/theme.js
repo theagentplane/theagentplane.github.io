@@ -1,5 +1,5 @@
 /* ============================================================
-   AgentPlane — theme switcher (light / dark slider)
+   AgentPlane - theme switcher (light / dark slider)
    Load theme-init.js synchronously in <head> before CSS.
    ============================================================ */
 

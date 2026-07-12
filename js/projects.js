@@ -1,5 +1,5 @@
 /* ============================================================
-   AgentPlane — project list + alphabetical index slider
+   AgentPlane - project list + alphabetical index slider
    Fetches data/projects.json. Projects sort A→Z by name.
 
    Homepage:
@@ -21,7 +21,7 @@ async function agentplaneLoadProjects() {
   } catch (err) {
     console.error(
       'AgentPlane: could not load data/projects.json. ' +
-      'Serve the repo with a local server — fetch() of local JSON is blocked under file://.',
+      'Serve the repo with a local server; fetch() of local JSON is blocked under file://.',
       err
     );
     return null;

@@ -1,7 +1,7 @@
 /* ============================================================
-   AgentPlane — shared stylesheet
+   AgentPlane - shared stylesheet
    Theme: clean light docs-site aesthetic (Sphinx/PyData/Docusaurus
-   style, as used by AutoGen, LangChain, etc.) — blue accent, white
+   style, as used by AutoGen, LangChain, etc.): blue accent, white
    background, card-based sections, mono for code/logo.
    ============================================================ */
 
@@ -69,7 +69,7 @@ html {
   scroll-padding-top: 80px;
 }
 
-/* Skip link — visible on keyboard focus only */
+/* Skip link - visible on keyboard focus only */
 .skip-link {
   position: absolute;
   top: -100px;
@@ -229,7 +229,7 @@ a:hover { text-decoration: underline; }
   align-self: center;
 }
 
-/* Theme switch — slider */
+/* Theme switch - slider */
 
 .theme-switch {
   display: inline-flex;
@@ -715,7 +715,7 @@ section {
   color: var(--text-faint);
 }
 
-/* Source badges — gallery mixes internal posts with external links */
+/* Source badges - gallery mixes internal posts with external links */
 
 .source-badge {
   display: inline-block;
@@ -765,7 +765,7 @@ section {
   background: rgba(9, 105, 218, 0.06);
 }
 
-/* Format badges — writing / talk / video */
+/* Format badges - writing / talk / video */
 
 .format-badge {
   display: inline-block;
@@ -836,7 +836,7 @@ section {
   background: var(--accent-soft);
 }
 
-/* Projects — alphabetical index slider */
+/* Projects - alphabetical index slider */
 
 .projects-layout {
   display: grid;
@@ -1252,7 +1252,7 @@ footer .container {
   line-height: 1.6;
 }
 
-/* ---------- Pillars (legacy — unused) ---------- */
+/* ---------- Pillars (legacy - unused) ---------- */
 
 .pillars {
   display: grid;

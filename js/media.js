@@ -1,5 +1,5 @@
 /* ============================================================
-   AgentPlane — media gallery renderer
+   AgentPlane - media gallery renderer
    Fetches data/posts.json and renders cards for writing,
    conference talks, and videos. Sorted newest-first by date.
 
@@ -29,7 +29,7 @@ async function agentplaneLoadMedia() {
   } catch (err) {
     console.error(
       'AgentPlane: could not load data/posts.json. ' +
-      'Serve the repo with a local server — fetch() of local JSON is blocked under file://.',
+      'Serve the repo with a local server; fetch() of local JSON is blocked under file://.',
       err
     );
     return null;

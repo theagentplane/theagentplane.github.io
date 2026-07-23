@@ -11,8 +11,10 @@
 
 ## Open source
 
-- [Chronicle on GitHub](https://github.com/theagentplane/chronicle): Decision-boundary capture, Envelopes, and cut-point replay for agents
-- [TokenOps on GitHub](https://github.com/theagentplane/tokenops-wiki): Run-aware token governance control plane: measure, attribute, and enforce policies per run
+- [Chronicle on GitHub](https://github.com/theagentplane/chronicle): Record-and-replay for agent decision graphs — Envelopes, cut-point replay
+- [Chronicle on PyPI](https://pypi.org/project/agent-chronicle/): `pip install agent-chronicle`
+- [TokenOps on GitHub](https://github.com/theagentplane/tokenops): Run-aware token governance control plane + SDK — shared ledger, in-path policies
+- [TokenOps on PyPI](https://pypi.org/project/agent-tokenops/): `pip install agent-tokenops`
 - [AgentPlane org on GitHub](https://github.com/theagentplane): All repositories and issues
 
 ## Featured media

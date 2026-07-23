@@ -77,12 +77,10 @@
         <a href="https://github.com/theagentplane/chronicle" class="btn btn-ghost" target="_blank" rel="noopener">View repo ↗</a>
       </div>
 
-      <p style="font-size:16px; margin-top:8px;">Records decision-boundary state (LLM calls, tool invocations, routing) as immutable Envelopes. Includes a test bench for fixture replay and cut-point replay.</p>
+      <p style="font-size:16px; margin-top:8px;">Record-and-replay for agent decision graphs. Chronicle captures LLM calls, tool invocations, and routing as immutable Envelopes so you can turn a production failure into a committed regression test and re-run your fix without live LLM calls.</p>
 
       <h4 style="margin-top:24px;">Quick start</h4>
-      <pre style="background:var(--bg-elevated); border:1px solid var(--border); border-radius:8px; padding:16px 18px; overflow-x:auto;"><code style="font-family:var(--mono); font-size:13.5px; color:var(--text-prose);">pip install -e ".[dev]"
-python scripts/run.py demo
-python scripts/run.py test</code></pre>
+      <pre style="background:var(--bg-elevated); border:1px solid var(--border); border-radius:8px; padding:16px 18px; overflow-x:auto;"><code style="font-family:var(--mono); font-size:13.5px; color:var(--text-prose);">pip install agent-chronicle</code></pre>
 
       <div class="tag-row" style="margin-top:20px;">
         <span class="tag">@boundary</span>
@@ -92,6 +90,7 @@ python scripts/run.py test</code></pre>
 
       <p style="margin-top:20px;">
         <a href="https://github.com/theagentplane/chronicle" class="btn btn-solid" target="_blank" rel="noopener">View on GitHub ↗</a>
+        <a href="https://pypi.org/project/agent-chronicle/" class="btn btn-ghost" style="margin-left:10px;" target="_blank" rel="noopener">PyPI ↗</a>
         <a href="https://www.youtube.com/watch?v=Lc8zRh9muoY" class="btn btn-ghost" style="margin-left:10px;" target="_blank" rel="noopener">Watch the talk ↗</a>
       </p>
     </div>
@@ -104,26 +103,29 @@ python scripts/run.py test</code></pre>
           <div class="card-icon" style="width:44px;height:44px;font-size:18px;">T</div>
           <div>
             <h3 style="margin-bottom:2px;">TokenOps</h3>
-            <span class="stars" data-github-repo="theagentplane/tokenops-wiki" data-github-meta-tail="Wiki" hidden></span>
+            <span class="stars" data-github-repo="theagentplane/tokenops" data-github-meta-tail="Python" hidden></span>
           </div>
         </div>
-        <a href="https://github.com/theagentplane/tokenops-wiki" class="btn btn-ghost" target="_blank" rel="noopener">View repo ↗</a>
+        <a href="https://github.com/theagentplane/tokenops" class="btn btn-ghost" target="_blank" rel="noopener">View repo ↗</a>
       </div>
 
-      <p style="font-size:16px; margin-top:8px;">A control plane alongside your agent (data plane). TokenOps measures spend as it accrues, attributes it to the right run and customer context, and enforces deterministic policies before and after each model, tool, and delegation call. Gateways see requests; TokenOps governs the full run: loops, growing context, fan-out, and runaway cost.</p>
+      <p style="font-size:16px; margin-top:8px;">Run-aware token governance for multi-agent systems. A control plane + SDK that registers each run, shares one ledger across agent processes, and enforces policies in-path — halt, mutate, or inject — before the next model, tool, or delegation call. Gateways see requests; TokenOps governs the full run.</p>
 
-      <h4 style="margin-top:24px;">Explore</h4>
-      <p style="font-size:15px; color:var(--text-dim); margin-top:8px;">Architecture, comparison with LiteLLM/Portkey/Langfuse, and customer outcomes live in the wiki.</p>
-      <p style="margin-top:16px;">
-        <a href="https://github.com/theagentplane/tokenops-wiki" class="btn btn-solid" target="_blank" rel="noopener">Read the wiki ↗</a>
-        <a href="https://github.com/theagentplane/tokenops-wiki/blob/main/docs/comparison.md" class="btn btn-ghost" style="margin-left:10px;" target="_blank" rel="noopener">Comparison guide ↗</a>
-      </p>
+      <h4 style="margin-top:24px;">Quick start</h4>
+      <pre style="background:var(--bg-elevated); border:1px solid var(--border); border-radius:8px; padding:16px 18px; overflow-x:auto;"><code style="font-family:var(--mono); font-size:13.5px; color:var(--text-prose);">pip install agent-tokenops
+make run   # control plane :7700 + Admin/Dashboard</code></pre>
 
       <div class="tag-row" style="margin-top:20px;">
         <span class="tag">Run-aware governance</span>
         <span class="tag">Control plane</span>
-        <span class="tag">Policy enforcement</span>
+        <span class="tag">Shared ledger</span>
       </div>
+
+      <p style="margin-top:20px;">
+        <a href="https://github.com/theagentplane/tokenops" class="btn btn-solid" target="_blank" rel="noopener">View on GitHub ↗</a>
+        <a href="https://pypi.org/project/agent-tokenops/" class="btn btn-ghost" style="margin-left:10px;" target="_blank" rel="noopener">PyPI ↗</a>
+        <a href="https://github.com/theagentplane/tokenops/blob/main/docs/product/comparison.md" class="btn btn-ghost" style="margin-left:10px;" target="_blank" rel="noopener">Comparison guide ↗</a>
+      </p>
     </div>
 </section>
     </div>

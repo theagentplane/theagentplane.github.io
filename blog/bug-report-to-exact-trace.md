@@ -1,12 +1,12 @@
 ---
-title: "A User Filed a Ticket. Your Agent Made 40 Calls Today. Which One Broke?"
+title: "Your Agent's Trace Tree Is Lying to You"
 date: 2026-08-10
 author: "Susheem Koul & Tisha Chawla"
 tags: [Chronicle, Debugging, Observability, Multi-Agent]
 canonical: https://theagentplane.github.io/blog/bug-report-to-exact-trace.html
 ---
 
-# A User Filed a Ticket. Your Agent Made 40 Calls Today. Which One Broke?
+# Your Agent's Trace Tree Is Lying to You
 
 *Written by [Susheem Koul](https://www.linkedin.com/in/susheemkoul/) & [Tisha Chawla](https://in.linkedin.com/in/tisha-chawla), building [Chronicle](https://github.com/theagentplane/chronicle) in the open.*
 

@@ -20,7 +20,7 @@
 
 ## Featured media
 
-- [A User Filed a Ticket. Which of Today's 40 Agent Calls Broke?](https://theagentplane.github.io/blog/bug-report-to-exact-trace.html): First-principles walkthrough of Chronicle's session/message/trace attribution fix (chronicle#41)
+- [Your Agent's Trace Tree Is Lying to You](https://theagentplane.github.io/blog/bug-report-to-exact-trace.html): First-principles walkthrough of Chronicle's session/message/trace attribution fix (chronicle#41)
 - [Your Agent Failed in Prod (video)](https://www.youtube.com/watch?v=Lc8zRh9muoY): Record-and-replay for autonomous agents: Chronicle walkthrough
 - [Your Agent Failed in Prod (article)](https://dev.to/tisha/your-agent-failed-in-prod-good-luck-reproducing-it-56ci): Why replayability beats bitwise determinism
 - [Why Agents Forget](https://dev.to/tisha/why-agents-forget-5b46): How memory works in AI agents and what it takes to make them learn

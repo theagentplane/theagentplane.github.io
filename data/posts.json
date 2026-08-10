@@ -2,7 +2,7 @@
   {
     "id": "bug-report-to-exact-trace",
     "format": "writing",
-    "title": "Your Agent's Trace Tree Is Lying to You",
+    "title": "A User Filed a Ticket. Your Trace Tree Pointed at the Wrong Call.",
     "excerpt": "The four ids that connect a support ticket to an exact agent call, the attribution bug that silently breaks naive multi-agent tracing, and the one-line fix, from first principles.",
     "date": "2026-08-10",
     "author": "Susheem Koul & Tisha Chawla",
@@ -12,7 +12,7 @@
     "url": "/blog/bug-report-to-exact-trace.html",
     "source": "AgentPlane",
     "heroEyebrow": "New on the blog",
-    "heroHeadline": "Your Agent's Trace Tree Is Lying to You",
+    "heroHeadline": "A User Filed a Ticket. Your Trace Tree Pointed at the Wrong Call.",
     "heroLede": "The four ids that connect a support ticket to an exact agent call, the attribution bug that silently breaks naive multi-agent tracing, and the one-line fix, from first principles.",
     "heroPrimaryCta": { "label": "Read the post", "href": "/blog/bug-report-to-exact-trace.html" },
     "heroSecondaryCta": { "label": "Star Chronicle ↗", "href": "https://github.com/theagentplane/chronicle" }

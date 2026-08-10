@@ -1,0 +1,45 @@
+<svg viewBox="0 0 920 400" xmlns="http://www.w3.org/2000/svg" font-family="'JetBrains Mono','IBM Plex Mono',ui-monospace,Menlo,Consolas,monospace">
+  <rect x="0" y="0" width="920" height="400" rx="14" fill="#ffffff" stroke="#e5e8eb" stroke-width="1.5"/>
+
+  <!-- Panel: Before -->
+  <g>
+    <rect x="24" y="24" width="424" height="352" rx="10" fill="#fff5f5" stroke="#f2b8bb" stroke-width="1.5"/>
+    <text x="46" y="58" font-size="12" letter-spacing="1.5" fill="#cf222e" font-weight="700">BEFORE: LAST-FINISHED PARENT</text>
+    <text x="46" y="78" font-size="11.5" fill="#57606a">parent_envelope_id = whatever span closed most recently</text>
+
+    <text x="46" y="112" font-size="13" fill="#1c2128">orchestrator#1</text>
+    <text x="70" y="136" font-size="13" fill="#1c2128">researcher#1</text>
+    <text x="94" y="160" font-size="12.5" fill="#57606a">llm#1</text>
+    <text x="94" y="182" font-size="12.5" fill="#57606a">web_search#1</text>
+    <text x="94" y="206" font-size="12.5" fill="#cf222e" font-weight="700">llm#2 ✗</text>
+    <text x="94" y="228" font-size="12.5" fill="#cf222e" font-weight="700">web_search#2 ✗</text>
+    <text x="70" y="252" font-size="13" fill="#cf222e" font-weight="700">researcher#2: no children</text>
+
+    <rect x="46" y="270" width="378" height="86" rx="8" fill="#ffffff" stroke="#f2b8bb"/>
+    <text x="60" y="292" font-size="11.5" fill="#82071e">researcher#2's real calls got attributed to</text>
+    <text x="60" y="310" font-size="11.5" fill="#82071e">researcher#1, because researcher#1's span was the</text>
+    <text x="60" y="328" font-size="11.5" fill="#82071e">last one to finish when llm#2 started. Debugging</text>
+    <text x="60" y="346" font-size="11.5" fill="#82071e">researcher#2 now points you at the wrong subtree.</text>
+  </g>
+
+  <!-- Panel: After -->
+  <g>
+    <rect x="472" y="24" width="424" height="352" rx="10" fill="#f3fbf6" stroke="#9fd8b5" stroke-width="1.5"/>
+    <text x="494" y="58" font-size="12" letter-spacing="1.5" fill="#1a7f37" font-weight="700">AFTER: CONTEXT-STACK PARENT</text>
+    <text x="494" y="78" font-size="11.5" fill="#57606a">parent_envelope_id = the span open when this one started</text>
+
+    <text x="494" y="112" font-size="13" fill="#1c2128">orchestrator#1</text>
+    <text x="518" y="136" font-size="13" fill="#1c2128">researcher#1</text>
+    <text x="542" y="160" font-size="12.5" fill="#57606a">llm#1</text>
+    <text x="542" y="182" font-size="12.5" fill="#57606a">web_search#1</text>
+    <text x="518" y="206" font-size="13" fill="#1a7f37" font-weight="700">researcher#2 ✓</text>
+    <text x="542" y="230" font-size="12.5" fill="#1a7f37">llm#2</text>
+    <text x="542" y="252" font-size="12.5" fill="#1a7f37">web_search#2</text>
+
+    <rect x="494" y="270" width="378" height="86" rx="8" fill="#ffffff" stroke="#9fd8b5"/>
+    <text x="508" y="292" font-size="11.5" fill="#0f5a25">The span opens on entry, before the function body</text>
+    <text x="508" y="310" font-size="11.5" fill="#0f5a25">runs, not after it returns. Every call made while</text>
+    <text x="508" y="328" font-size="11.5" fill="#0f5a25">researcher#2's span is open parents to researcher#2,</text>
+    <text x="508" y="346" font-size="11.5" fill="#0f5a25">no matter what else finished first.</text>
+  </g>
+</svg>

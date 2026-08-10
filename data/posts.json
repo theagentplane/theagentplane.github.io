@@ -1,5 +1,23 @@
 [
   {
+    "id": "bug-report-to-exact-trace",
+    "format": "writing",
+    "title": "A User Filed a Ticket. Your Agent Made 40 Calls Today. Which One Broke?",
+    "excerpt": "The four ids that connect a support ticket to an exact agent call, the attribution bug that silently breaks naive multi-agent tracing, and the one-line fix, from first principles.",
+    "date": "2026-08-10",
+    "author": "Susheem Koul & Tisha Chawla",
+    "duration": "9 min read",
+    "tags": ["Chronicle", "Debugging", "Observability", "Multi-Agent"],
+    "type": "internal",
+    "url": "/blog/bug-report-to-exact-trace.html",
+    "source": "AgentPlane",
+    "heroEyebrow": "New on the blog",
+    "heroHeadline": "A User Filed a Ticket. Which of Today's 40 Agent Calls Broke?",
+    "heroLede": "The four ids that connect a support ticket to an exact agent call, the attribution bug that silently breaks naive multi-agent tracing, and the one-line fix, from first principles.",
+    "heroPrimaryCta": { "label": "Read the post", "href": "/blog/bug-report-to-exact-trace.html" },
+    "heroSecondaryCta": { "label": "Star Chronicle ↗", "href": "https://github.com/theagentplane/chronicle" }
+  },
+  {
     "id": "agent-failed-in-prod-record-replay",
     "format": "video",
     "title": "Your Agent Failed in Prod. Good Luck Reproducing It.",

@@ -3,17 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A User Filed a Ticket. Your Trace Tree Pointed at the Wrong Call. - AgentPlane</title>
-<meta name="description" content="From first principles to a shipped fix: the four ids that connect a support ticket to an exact agent call, the attribution bug that silently breaks naive multi-agent tracing, and how Chronicle fixes it.">
+<title>Debugging Multi-Agent Systems: Your Trace Tree Is Lying - AgentPlane</title>
+<meta name="description" content="How to debug multi-agent AI systems: trace attribution, OpenTelemetry span nesting, and session, message, and trace ids for LLM agent observability, from first principles with Chronicle.">
 <link rel="canonical" href="https://theagentplane.github.io/blog/bug-report-to-exact-trace.html">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://theagentplane.github.io/blog/bug-report-to-exact-trace.html">
-<meta property="og:title" content="A User Filed a Ticket. Your Trace Tree Pointed at the Wrong Call.">
-<meta property="og:description" content="The four ids that connect a support ticket to an exact agent call, the attribution bug that breaks naive multi-agent tracing, and how Chronicle fixes it.">
+<meta property="og:title" content="Debugging Multi-Agent Systems: Your Trace Tree Is Lying">
+<meta property="og:description" content="Debugging multi-agent AI systems from first principles: session, message, and trace ids, the attribution bug that breaks naive OpenTelemetry-style tracing, and how Chronicle fixes it.">
 <meta property="og:image" content="https://theagentplane.github.io/assets/blog/waterfall.svg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="A User Filed a Ticket. Your Trace Tree Pointed at the Wrong Call.">
-<meta name="twitter:description" content="From first principles to a shipped fix: debugging multi-agent systems from a bug report down to the exact LLM call.">
+<meta name="twitter:title" content="Debugging Multi-Agent Systems: Your Trace Tree Is Lying">
+<meta name="twitter:description" content="Debugging multi-agent AI systems, trace attribution, and LLM agent observability, from first principles with Chronicle.">
 <meta name="twitter:image" content="https://theagentplane.github.io/assets/blog/waterfall.svg">
 <link rel="icon" href="../assets/favicon.png" type="image/png" sizes="32x32">
 <link rel="icon" href="../assets/favicon-64.png" type="image/png" sizes="64x64">
@@ -27,7 +27,7 @@
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "A User Filed a Ticket. Your Trace Tree Pointed at the Wrong Call.",
+  "headline": "Debugging Multi-Agent Systems: Your Trace Tree Is Lying",
   "datePublished": "2026-08-10",
   "author": [
     { "@type": "Person", "name": "Susheem Koul" },
@@ -69,7 +69,7 @@
 <header class="article-header">
   <div class="container" style="max-width:700px; margin:0 auto; padding:0 24px;">
     <span class="section-label">Chronicle · Debugging</span>
-    <h1>A User Filed a Ticket. Your Trace Tree Pointed at the Wrong Call.</h1>
+    <h1>Debugging Multi-Agent Systems: Your Trace Tree Is Lying</h1>
     <div class="article-meta">
       <span>Aug 10, 2026</span>
       <span>·</span>

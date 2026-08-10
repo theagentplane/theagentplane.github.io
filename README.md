@@ -12,7 +12,8 @@ agentplane-site/
 ├── index.html                          landing page (dynamic hero + media teaser)
 ├── projects.html                       Chronicle + TokenOps detail
 ├── media.html                          writing, talks & videos gallery
-├── blog.html                           redirect → media.html (legacy URL)
+├── blog.html                           native blog index (long-form posts)
+├── blog/*.html                         individual blog posts (+ .md source for cross-posting)
 ├── about.html                          team page
 ├── llms.txt                            AI-agent discovery index
 ├── sitemap.xml                         search engine sitemap
@@ -28,7 +29,7 @@ agentplane-site/
 ├── css/
 │   └── style.css                       shared stylesheet
 └── claude-skills/
-    ├── add-media-item/SKILL.md         add writing, talks, or videos
+    ├── add-media-item/SKILL.md         add writing, talks, or videos (external, and native blog posts)
     └── add-blog-post/SKILL.md          deprecated alias → add-media-item
 ```
 

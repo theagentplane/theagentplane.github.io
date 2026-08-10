@@ -2,11 +2,99 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="refresh" content="0; url=media.html">
-<link rel="canonical" href="https://theagentplane.github.io/media.html">
-<title>Redirecting…</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog - AgentPlane</title>
+<meta name="description" content="Long-form, first-principles writing on agent debugging, replay, and token infrastructure from Susheem Koul and Tisha Chawla.">
+<link rel="canonical" href="https://theagentplane.github.io/blog.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://theagentplane.github.io/blog.html">
+<meta property="og:title" content="Blog - AgentPlane">
+<meta property="og:description" content="Long-form, first-principles writing on agent debugging, replay, and token infrastructure.">
+<meta property="og:image" content="https://theagentplane.github.io/assets/logo-mark.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Blog - AgentPlane">
+<meta name="twitter:description" content="Long-form, first-principles writing on agent debugging, replay, and token infrastructure.">
+<link rel="icon" href="assets/favicon.png" type="image/png" sizes="32x32">
+<link rel="icon" href="assets/favicon-64.png" type="image/png" sizes="64x64">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png" sizes="180x180">
+<link rel="icon" href="assets/icon-192.png" type="image/png" sizes="192x192">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="js/theme-init.js"></script>
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<p>Moved to <a href="media.html">Media</a>.</p>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<nav class="site-nav" aria-label="Main">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <img src="assets/logo-mark.png" alt="AgentPlane logo" class="logo-mark" width="32" height="32">
+      AgentPlane
+    </a>
+    <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav-menu" aria-label="Open menu">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
+    <div class="nav-links" id="site-nav-menu">
+      <a href="index.html">Home</a>
+      <a href="projects.html">Projects</a>
+      <a href="blog.html" class="active" aria-current="page">Blog</a>
+      <a href="media.html">Media</a>
+      <a href="about.html">About</a>
+      <a href="https://github.com/theagentplane" class="btn btn-solid" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+  </div>
+</nav>
+
+<main id="main-content">
+
+<header class="page-header">
+  <div class="container">
+    <span class="section-label">Blog</span>
+    <h1>Field notes from building in the open.</h1>
+    <p>Long-form, first-principles writeups: the bug, the fix, and the code, as we ship Chronicle and TokenOps. No marketing copy. We cross-post to <a href="https://dev.to/tisha" target="_blank" rel="noopener">dev.to</a>; this is the canonical copy. For talks, videos, and pieces we published elsewhere first, see <a href="media.html">Media</a>.</p>
+  </div>
+</header>
+
+<section>
+  <div class="container">
+    <div id="blog-list" class="post-list"></div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container">
+    <h2>Building Chronicle in the open</h2>
+    <p>Record-and-replay for agent decision graphs: reproduce a prod failure as a committed test, replay your fix with no live LLM calls. If a post here saves you a debugging session, a star tells us to keep writing.</p>
+    <div class="cta-actions">
+      <a href="https://github.com/theagentplane/chronicle" class="btn btn-solid" target="_blank" rel="noopener">★ Star Chronicle ↗</a>
+      <a href="projects.html" class="btn btn-ghost">View all projects</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-left">© 2026 AgentPlane. Built by Susheem Koul &amp; Tisha Chawla.</div>
+    <div class="footer-links">
+      <a href="https://github.com/theagentplane" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/susheemkoul/" target="_blank" rel="noopener">Susheem</a>
+      <a href="https://in.linkedin.com/in/tisha-chawla" target="_blank" rel="noopener">Tisha</a>
+      <a href="about.html">About</a>
+      <a href="media.html">Media</a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/theme.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/media.js"></script>
+<script>renderMediaList('blog-list', null, null, 'AgentPlane');</script>
+
 </body>
 </html>

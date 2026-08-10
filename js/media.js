@@ -11,7 +11,11 @@
      <script>renderMediaList('media-list', null, 'talk');</script> // talks only
    ============================================================ */
 
-const AGENTPLANE_MEDIA_URL = 'data/posts.json';
+/* Root-absolute: this file is shared by pages at the site root (index.html,
+   media.html, blog.html) and nested pages (blog/*.html), so a page-relative
+   path would 404 one tier down. Works on GitHub Pages org-root deploys and
+   any local server rooted at the site folder. */
+const AGENTPLANE_MEDIA_URL = '/data/posts.json';
 const AGENTPLANE_KNOWN_SOURCES = ['agentplane', 'substack', 'devto', 'linkedin', 'medium', 'youtube'];
 
 const AGENTPLANE_FORMAT_LABELS = {
@@ -139,12 +143,18 @@ function agentplaneRenderMediaRow(item) {
     </div>`;
 }
 
-function agentplaneFilterMedia(items, formatFilter) {
-  if (!formatFilter || formatFilter === 'all') return items;
-  return items.filter((item) => (item.format || 'writing') === formatFilter);
+function agentplaneFilterMedia(items, formatFilter, sourceFilter) {
+  let out = items;
+  if (formatFilter && formatFilter !== 'all') {
+    out = out.filter((item) => (item.format || 'writing') === formatFilter);
+  }
+  if (sourceFilter) {
+    out = out.filter((item) => item.source === sourceFilter);
+  }
+  return out;
 }
 
-async function renderMediaList(containerId, limit, formatFilter) {
+async function renderMediaList(containerId, limit, formatFilter, sourceFilter) {
   const container = document.getElementById(containerId);
   if (!container) return;
 
@@ -157,7 +167,7 @@ async function renderMediaList(containerId, limit, formatFilter) {
     return;
   }
 
-  const filtered = agentplaneFilterMedia(allItems, formatFilter);
+  const filtered = agentplaneFilterMedia(allItems, formatFilter, sourceFilter);
   const slice = limit ? filtered.slice(0, limit) : filtered;
   const useCards = container.classList.contains('media-card-grid');
 

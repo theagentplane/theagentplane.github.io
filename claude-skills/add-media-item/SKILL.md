@@ -78,6 +78,40 @@ Use the conference name as `source` (falls back to neutral badge if unrecognized
 
 `source: "YouTube"` gets a branded red badge. Other platforms use the neutral badge.
 
+### Writing — native blog post
+
+For long-form posts hosted on this site (`blog/*.html`), not linked out elsewhere first:
+
+```json
+{
+  "id": "kebab-case-slug",
+  "format": "writing",
+  "title": "Exact post title",
+  "excerpt": "1-2 sentence summary.",
+  "date": "YYYY-MM-DD",
+  "author": "Susheem Koul & Tisha Chawla",
+  "duration": "9 min read",
+  "tags": ["Chronicle"],
+  "type": "internal",
+  "url": "/blog/your-post-slug.html",
+  "source": "AgentPlane"
+}
+```
+
+`type: "internal"` and a root-absolute `url` (no `http`, starts with `/`) is what
+tells `media.js` to link in-page instead of opening a new tab. Root-absolute (not
+page-relative) matters because the same JSON entry is rendered from pages at
+different depths (`index.html`, `blog.html`, and from inside `blog/*.html` itself
+via the "more from the blog" widget), and a relative `blog/slug.html` would 404
+one level down. `source: "AgentPlane"` gets its own badge
+(`.source-agentplane` in `css/style.css`) and is what `blog.html` filters on
+(`renderMediaList('blog-list', null, null, 'AgentPlane')`) to show only native posts.
+
+Write the post in two files: `blog/slug.html` (uses `.article-header` /
+`.article-body` from `css/style.css`, nav + footer like every other page) and
+`blog/slug.md` (plain GitHub-flavored markdown, same content, absolute image URLs)
+as the source you cross-post to dev.to / Substack. Add images under `assets/blog/`.
+
 ## Step 3: Homepage hero (optional)
 
 If `data/hero.json` has `"mode": "auto"`, the newest item by `date` becomes the homepage hero automatically — no hero edit needed.

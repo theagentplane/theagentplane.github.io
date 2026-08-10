@@ -1,0 +1,63 @@
+<svg viewBox="0 0 860 340" xmlns="http://www.w3.org/2000/svg" font-family="'JetBrains Mono','IBM Plex Mono',ui-monospace,Menlo,Consolas,monospace">
+  <rect x="0" y="0" width="860" height="340" rx="14" fill="#ffffff" stroke="#e5e8eb" stroke-width="1.5"/>
+
+  <text x="30" y="38" font-size="13" font-weight="700" fill="#1c2128">trace-9f2a1</text>
+  <text x="30" y="56" font-size="11" fill="#8c959f">session_id=sess_abc  message_id=msg_042  total=164.5ms</text>
+
+  <!-- legend -->
+  <g font-size="11" fill="#57606a">
+    <rect x="470" y="26" width="12" height="12" rx="2" fill="#ede9fe" stroke="#6e40c9"/>
+    <text x="488" y="36">custom</text>
+    <rect x="560" y="26" width="12" height="12" rx="2" fill="#dbeafe" stroke="#3563e9"/>
+    <text x="578" y="36">llm</text>
+    <rect x="630" y="26" width="12" height="12" rx="2" fill="#dcfce7" stroke="#1a7f37"/>
+    <text x="648" y="36">tool</text>
+  </g>
+
+  <line x1="30" y1="66" x2="830" y2="66" stroke="#e5e8eb"/>
+
+  <!-- rows: label col ends ~200, timeline 200..720 (520px = 164.5ms) -->
+  <!-- row 1: orchestrator#1 -->
+  <text x="30" y="102" font-size="12.5" fill="#1c2128">orchestrator#1</text>
+  <rect x="200" y="88" width="0" height="18" rx="3" fill="#ede9fe" stroke="#6e40c9">
+    <animate attributeName="width" values="0;520;520;0;0" keyTimes="0;0.08;0.75;0.85;1" dur="7s" begin="0s" repeatCount="indefinite"/>
+  </rect>
+
+  <!-- row 2: researcher#1 -->
+  <text x="52" y="134" font-size="12.5" fill="#1c2128">researcher#1</text>
+  <rect x="200" y="120" width="0" height="18" rx="3" fill="#ede9fe" stroke="#6e40c9">
+    <animate attributeName="width" values="0;236;236;0;0" keyTimes="0;0.08;0.75;0.85;1" dur="7s" begin="0.2s" repeatCount="indefinite"/>
+  </rect>
+
+  <!-- row 3: llm#1 -->
+  <text x="76" y="166" font-size="12.5" fill="#57606a">llm#1</text>
+  <rect x="200" y="152" width="0" height="18" rx="3" fill="#dbeafe" stroke="#3563e9">
+    <animate attributeName="width" values="0;134;134;0;0" keyTimes="0;0.08;0.75;0.85;1" dur="7s" begin="0.4s" repeatCount="indefinite"/>
+  </rect>
+
+  <!-- row 4: web_search#1 -->
+  <text x="76" y="198" font-size="12.5" fill="#57606a">web_search#1</text>
+  <rect x="336" y="184" width="0" height="18" rx="3" fill="#dcfce7" stroke="#1a7f37">
+    <animate attributeName="width" values="0;100;100;0;0" keyTimes="0;0.08;0.75;0.85;1" dur="7s" begin="0.6s" repeatCount="indefinite"/>
+  </rect>
+
+  <!-- row 5: researcher#2 -->
+  <text x="52" y="230" font-size="12.5" fill="#1c2128">researcher#2</text>
+  <rect x="439" y="216" width="0" height="18" rx="3" fill="#ede9fe" stroke="#6e40c9">
+    <animate attributeName="width" values="0;229;229;0;0" keyTimes="0;0.08;0.75;0.85;1" dur="7s" begin="0.8s" repeatCount="indefinite"/>
+  </rect>
+
+  <!-- row 6: llm#2 -->
+  <text x="76" y="262" font-size="12.5" fill="#57606a">llm#2</text>
+  <rect x="439" y="248" width="0" height="18" rx="3" fill="#dbeafe" stroke="#3563e9">
+    <animate attributeName="width" values="0;128;128;0;0" keyTimes="0;0.08;0.75;0.85;1" dur="7s" begin="1.0s" repeatCount="indefinite"/>
+  </rect>
+
+  <!-- row 7: web_search#2 -->
+  <text x="76" y="294" font-size="12.5" fill="#57606a">web_search#2</text>
+  <rect x="567" y="280" width="0" height="18" rx="3" fill="#dcfce7" stroke="#1a7f37">
+    <animate attributeName="width" values="0;98;98;0;0" keyTimes="0;0.08;0.75;0.85;1" dur="7s" begin="1.2s" repeatCount="indefinite"/>
+  </rect>
+
+  <text x="30" y="322" font-size="11" fill="#8c959f">chronicle.instrument_otel() and ExecutionGraph.to_otel_waterfall(): same tree either way</text>
+</svg>

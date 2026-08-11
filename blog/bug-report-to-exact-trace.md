@@ -11,32 +11,32 @@ canonical: https://theagentplane.github.io/blog/bug-report-to-exact-trace.html
 
 *Written by [Susheem Koul](https://www.linkedin.com/in/susheemkoul/) & [Tisha Chawla](https://in.linkedin.com/in/tisha-chawla), building [Chronicle](https://github.com/theagentplane/chronicle) in the open.*
 
-It's Tuesday. Someone on support forwards you a ticket: *"the assistant told a customer something false in this chat."* Or maybe it's quieter than that, a thumbs-down on your own feedback button, or a one-line ICM auto-filed by a monitor. Whatever the channel, what lands on your desk is never "here is the broken function." It's a **conversation id**, and if you're lucky, **which message** in it went sideways.
+It's Tuesday. Someone on support forwards you a message: *"priya@acmecorp.com says the assistant told her something false, sometime yesterday afternoon."* No conversation id. No message id. Just a name and a rough window of time. Maybe it's quieter than that: a thumbs-down on your own feedback button, or an alert your monitoring auto-files. Either way, what lands on your desk is never "here is the broken function." At best, it's a person and roughly when.
 
-Your agent, meanwhile, is not one function call. A single user message might fan out into an orchestrator calling a researcher, which calls a model, which calls a search tool, twice, with a retry in the middle. That one bad reply the user saw was produced by one specific call, three levels deep, somewhere inside a tree of a dozen. You have a conversation. You need a call stack.
+Your agent, meanwhile, is not one function call. A single user message might fan out into an orchestrator calling a researcher, which calls a model, which calls a search tool, twice, with a retry in the middle. That one bad reply the user saw was produced by one specific call, three levels deep, somewhere inside a tree of a dozen calls made sometime in a two-hour window. You have a name and a time range. You need a call stack.
 
-This post closes that gap, from first principles, with the actual mechanism, not a hand-wave. By the end you'll know exactly which four ids matter, the specific bug that quietly breaks naive tracing in any system with parallel or repeated sub-agents (you have this bug right now if you haven't specifically fixed it), and the one-line change that fixes it, drawn from [Chronicle](https://github.com/theagentplane/chronicle) (`chronicle#41`, open for review as we write this).
+This post closes that gap, from first principles, with the actual mechanism, not a hand-wave. By the end you'll know how to go from "a name and roughly when" down to a session, a message, and the exact call that misfired; the specific attribution bug that quietly breaks naive tracing in any system with parallel or repeated sub-agents (you have this bug right now if you haven't specifically fixed it); and the one-line change that fixes it, drawn from [Chronicle](https://github.com/theagentplane/chronicle) (`chronicle#41`, open for review as we write this).
 
 ## First principles: the four IDs
 
-Before you can go from "a user complained" to "here's the exact call that misfired," you need to know what identifies what. There are exactly four levels, and conflating any two of them is where most homegrown tracing setups go wrong.
+Before you can go from "a name and roughly when" to "here's the exact call that misfired," you need to know what identifies what, and where you actually start. There are four levels, and conflating any two of them is where most homegrown tracing setups go wrong.
 
 <img src="https://theagentplane.github.io/assets/blog/id-hierarchy.svg" alt="Session contains messages, one message maps to one trace, one trace contains many envelopes" width="100%">
 
 - **Session** (`session_id`). One conversation. A user might send you ten messages over an hour; they all share one session.
-- **Message**. One user turn inside that session. This is what support usually gives you: "in this message, the agent said something wrong."
+- **Message**. One user turn inside that session. This is what a precise bug report gives you, when you're lucky enough to get one: "in this message, the agent said something wrong."
 - **Trace** (`trace_id`). One agent *run*. In practice, one message turn produces one trace: the user sends a message, the agent does whatever it does (one call or twenty), and produces a reply.
 - **Envelope** (`envelope_id`, OTel calls it a *span*). One LLM call, one tool call, or one routing decision inside that run. A trace is an ordered tree of these.
 
-Single-shot service-to-service calls collapse the first two (no multi-turn session, just a `session_id` and maybe a `caller_id`). Multi-turn chat keeps `session_id` constant across the conversation and mints a new `message_id` (and a new `trace_id`) on every turn. Either way, the shape is the same: **the ticket gives you the left two boxes, and you need to get to the right one.**
+Resolving "yesterday afternoon" into a `session_id` is ordinary application code, not Chronicle's job: look up the account, find the sessions active in that window. Chronicle's job starts once you have that `session_id`. Single-shot service-to-service calls collapse the next two (no multi-turn session, just a `session_id` and maybe a `caller_id`). Multi-turn chat keeps `session_id` constant across the conversation and mints a new `message_id` (and a new `trace_id`) on every turn. Either way, the shape is the same: **you start with almost nothing, resolve down to a session and a message, and Chronicle gets you the rest of the way to the exact call.**
 
-This is exactly the mapping problem we'd sketched out on a whiteboard before writing a line of code: session → message → trace, with the open question of how a support tool ever gets from "message 042" to "the actual execution graph." The rest of this post is the answer.
+This is exactly the mapping problem we'd sketched out on a whiteboard before writing a line of code: name and time → session → message → trace, with the open question of how you ever get from "roughly yesterday afternoon" to "the actual execution graph." The rest of this post is the answer.
 
 ## Why "just add tracing" doesn't get you there
 
 Say you've done the obvious thing: wrapped your LLM and tool calls so each one records an envelope with a `parent_envelope_id`, and you build a tree out of that after the fact. This works in every demo. It works in your first three fixtures. Then it breaks silently, on the one trace you actually needed, because you have **two branches of the same shape running in the same trace**, which in a multi-agent system is the common case, not the edge case.
 
-And if you already run OpenTelemetry, or pipe traces into LangSmith or Phoenix, you are not exempt. The failure mode here isn't "we have no tracing." It's "our tracing is confidently wrong," which is worse, because a tree that renders cleanly is a tree you trust. You stop looking anywhere else. You spend the debugging session inside the wrong subtree, close the ticket with a fix that doesn't touch the actual bug, and it comes back a week later with a slightly different repro.
+And if you already run OpenTelemetry against this agent, you are not exempt. The failure mode here isn't "we have no tracing." It's "our tracing is confidently wrong," which is worse, because a tree that renders cleanly is a tree you trust. You stop looking anywhere else. You spend the debugging session inside the wrong subtree, close the ticket with a fix that doesn't touch the actual bug, and it comes back a week later with a slightly different repro.
 
 Here's the concrete scenario: an orchestrator calls the same sub-agent twice, once per source it needs to research. Each call does an LLM planning step and a tool call:
 
@@ -99,7 +99,7 @@ orchestrator#1   █████████████████████
     web_search#2                                       ██████      30.9ms  tool
 ```
 
-This is what `graph.to_otel_waterfall()` prints (there's also `graph.to_otel_tree()` for a `├─ └─` view). Both are debug helpers you run locally or pipe into a log line, not a hosted product; if you want a shared dashboard your whole team browses, that's a separate concern from what a recording library should own.
+This is what `graph.to_otel_waterfall()` prints (there's also `graph.to_otel_tree()`, which prints the same tree as indented lines instead of a timeline). Both are debug helpers you run locally or pipe into a log line, not a hosted product; if you want a shared dashboard your whole team browses, that's a separate concern from what a recording library should own.
 
 ## The other half: getting `session_id` and `message_id` onto the trace
 
@@ -119,7 +119,7 @@ with chronicle.record(
     orchestrator(user_message)
 ```
 
-That's it. Chronicle doesn't store your chat history and doesn't own a "look up trace by message ID" index; that's a product concern for whatever's on the other end (your logging pipeline, your control plane, a support tool). What Chronicle guarantees is that once you have a `session_id` and a `message_id` from a ticket, every envelope in the matching trace carries them, so any store you point it at can build that index trivially: `grep`, a SQL `WHERE`, or a dashboard query, your choice.
+That's it. Chronicle doesn't store your chat history and doesn't own a "look up trace by message ID" index; that's a product concern for whatever's on the other end (your logging pipeline, your control plane, a support tool). We're building a complementing dashboard for exactly this lookup next (more on that in a future post). Until then, what Chronicle guarantees is that once you have a `session_id` and a `message_id`, every envelope in the matching trace carries them, so any store you point it at can build that index trivially: `grep`, a SQL `WHERE`, or a dashboard query, your choice.
 
 ## Try it yourself
 

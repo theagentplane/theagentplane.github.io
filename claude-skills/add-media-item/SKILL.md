@@ -107,10 +107,47 @@ one level down. `source: "AgentPlane"` gets its own badge
 (`.source-agentplane` in `css/style.css`) and is what `blog.html` filters on
 (`renderMediaList('blog-list', null, null, 'AgentPlane')`) to show only native posts.
 
-Write the post in two files: `blog/slug.html` (uses `.article-header` /
-`.article-body` from `css/style.css`, nav + footer like every other page) and
-`blog/slug.md` (plain GitHub-flavored markdown, same content, absolute image URLs)
-as the source you cross-post to dev.to / Substack. Add images under `assets/blog/`.
+Write the post in **three** files:
+- `blog/slug.html`: uses `.article-header` / `.article-body` from `css/style.css`,
+  nav + footer like every other page.
+- `blog/slug.md`: plain GitHub-flavored markdown, same content, absolute image
+  URLs, `canonical:` front-matter key. This is the site-canonical copy, byline
+  links to LinkedIn (matches the HTML).
+- `blog/slug.devto.md`: dev.to-specific front matter (`published: false` so it
+  lands as a draft, `description`, `tags` as a plain comma-separated string, max
+  4, lowercase single words, `cover_image`, `canonical_url`, not `canonical`,
+  dev.to's literal expected key). Images are plain `![alt](url)`, not `<img>`,
+  since dev.to's markdown renderer doesn't reliably pass through raw HTML.
+
+Diagrams live as `assets/blog/slug-name.svg` for the site (crisp, tiny, and the
+site's CSS/theme can style them), but dev.to proxies external images through
+its own Cloudinary pipeline and SVG support through that path isn't reliably
+documented, so **the `.devto.md` file should reference `.png` versions of the
+same diagrams**, not the `.svg`. Generate them with a headless Chromium
+screenshot rather than guessing a converter is installed:
+
+```powershell
+$edge = "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
+& $edge --headless --disable-gpu --screenshot="assets\blog\name.png" `
+  --window-size=<svg-width-plus-100>,<svg-height-plus-20> `
+  "file:///<absolute-path>\assets\blog\name.svg"
+```
+
+Pad the window size well past the SVG's own `viewBox` (Edge can otherwise clip
+the right/bottom edge), and if the SVG has SMIL `<animate>` elements, add
+`--virtual-time-budget=2500` so it captures a settled frame instead of
+whatever was mid-draw at t=0.
+
+dev.to has no true multi-author posts on personal accounts (no org exists for
+theagentplane as of 2026-08). The real "collaborate" mechanism there is:
+publish from **one** account, `@mention` the other author by their dev.to
+handle in the byline (creates a real profile link + notifies them), and point
+`canonical_url` at the site so the site stays the SEO source of truth
+regardless of which account posted it. A dev.to Organization would enable true
+shared publishing, but someone has to create that account by hand
+(`dev.to/settings/organization`), not something to set up unprompted.
+
+Add images under `assets/blog/`.
 
 Give each `blog/slug.html` a unique-reader badge near the byline (not in the
 `.md`, it's a page-only widget, no custom JS needed):

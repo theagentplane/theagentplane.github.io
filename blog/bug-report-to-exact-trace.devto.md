@@ -3,7 +3,7 @@ title: Debugging Multi-Agent Systems: Your Trace Tree Is Lying
 published: false
 description: How to debug multi-agent AI systems, trace attribution, OpenTelemetry span nesting, and session, message, and trace ids for LLM agent observability, from first principles with Chronicle.
 tags: ai, llm, python, opensource
-cover_image: https://theagentplane.github.io/assets/blog/waterfall.svg
+cover_image: https://theagentplane.github.io/assets/blog/waterfall.png
 canonical_url: https://theagentplane.github.io/blog/bug-report-to-exact-trace.html
 ---
 
@@ -19,7 +19,7 @@ This post closes that gap, from first principles, with the actual mechanism, not
 
 Before you can go from "a name and roughly when" to "here's the exact call that misfired," you need to know what identifies what, and where you actually start. There are four levels, and conflating any two of them is where most homegrown tracing setups go wrong.
 
-![Session contains messages, one message maps to one trace, one trace contains many envelopes](https://theagentplane.github.io/assets/blog/id-hierarchy.svg)
+![Session contains messages, one message maps to one trace, one trace contains many envelopes](https://theagentplane.github.io/assets/blog/id-hierarchy.png)
 
 - **Session** (`session_id`). One conversation. A user might send you ten messages over an hour; they all share one session.
 - **Message**. One user turn inside that session. This is what a precise bug report gives you, when you're lucky enough to get one: "in this message, the agent said something wrong."
@@ -63,7 +63,7 @@ Notice `researcher` and `orchestrator` aren't boundaries themselves. That's deli
 
 The naive answer is "attribute a new envelope to whichever envelope finished most recently." It's the simplest thing that could work, and it's wrong the moment two sibling subtrees are in flight or interleaved:
 
-![Before: last-finished attribution misattributes researcher number 2's calls to researcher number 1. After: context-stack attribution nests them correctly.](https://theagentplane.github.io/assets/blog/attribution-before-after.svg)
+![Before: last-finished attribution misattributes researcher number 2's calls to researcher number 1. After: context-stack attribution nests them correctly.](https://theagentplane.github.io/assets/blog/attribution-before-after.png)
 
 When `researcher`'s second call starts its `planner` call, the "most recently finished" envelope is `web_search#1` from the *first* call, not anything belonging to the second `researcher`. The tree you reconstruct silently welds the second research branch onto the first one. You go looking for why researcher #2 produced a bad answer, and every log line in front of you belongs to researcher #1. Nothing crashes. Nothing throws. The trace just quietly points you at the wrong code for an hour.
 
@@ -82,7 +82,7 @@ finally:
 
 Because `start_span()` runs before `fn`, any boundary invoked *while this one is still on the stack* correctly parents to it, no matter what else happens to finish in between. Rerun the two-branch scenario above and the tree comes out right every time, regardless of timing:
 
-![Animated waterfall: orchestrator, two researcher branches each with a correctly nested llm and tool call](https://theagentplane.github.io/assets/blog/waterfall.svg)
+![Animated waterfall: orchestrator, two researcher branches each with a correctly nested llm and tool call](https://theagentplane.github.io/assets/blog/waterfall.png)
 
 ```
 Trace: trace-9f2a1

@@ -1019,7 +1019,7 @@ section {
   margin: 0 0 28px;
 }
 
-.article-body img {
+.article-body figure img {
   display: block;
   width: 100%;
   height: auto;

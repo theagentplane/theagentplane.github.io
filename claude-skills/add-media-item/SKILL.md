@@ -112,6 +112,20 @@ Write the post in two files: `blog/slug.html` (uses `.article-header` /
 `blog/slug.md` (plain GitHub-flavored markdown, same content, absolute image URLs)
 as the source you cross-post to dev.to / Substack. Add images under `assets/blog/`.
 
+Give each `blog/slug.html` a unique-reader badge near the byline (not in the
+`.md`, it's a page-only widget, no custom JS needed):
+
+```html
+<p class="post-meta" style="margin-top: 16px;">
+  <img src="https://visitor-badge.laobi.icu/badge?page_id=theagentplane.blog.slug&left_text=unique%20readers" alt="Unique reader count for this post" height="20" loading="lazy">
+</p>
+```
+
+`page_id` must be unique per post (`theagentplane.blog.<slug>`); the badge service
+dedupes by visitor IP within a time window server-side, so this is an actual
+(free, no-signup) unique-visitor count, not just a page-view counter. Don't use
+`countapi.xyz` for this, it's dead (DNS doesn't resolve).
+
 ## Step 3: Homepage hero (optional)
 
 If `data/hero.json` has `"mode": "auto"`, the newest item by `date` becomes the homepage hero automatically — no hero edit needed.

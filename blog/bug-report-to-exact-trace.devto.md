@@ -7,7 +7,7 @@ cover_image: https://theagentplane.github.io/assets/blog/waterfall.svg
 canonical_url: https://theagentplane.github.io/blog/bug-report-to-exact-trace.html
 ---
 
-*Co-written with [@susheem-k](https://dev.to/susheem-k) / [@tisha](https://dev.to/tisha). We build [Chronicle](https://github.com/theagentplane/chronicle) in the open at [AgentPlane](https://theagentplane.github.io).*
+*Co-written with [@susheem-k](https://dev.to/susheem-k) / [@tisha](https://dev.to/tisha). We build [Chronicle](https://github.com/theagentplane/chronicle) in the open at [AgentPlane](https://theagentplane.github.io). Originally published at [theagentplane.github.io](https://theagentplane.github.io/blog/bug-report-to-exact-trace.html).*
 
 It's Tuesday. Someone on support forwards you a message: *"priya@acmecorp.com says the assistant told her something false, sometime yesterday afternoon."* No conversation id. No message id. Just a name and a rough window of time. Maybe it's quieter than that: a thumbs-down on your own feedback button, or an alert your monitoring auto-files. Either way, what lands on your desk is never "here is the broken function." At best, it's a person and roughly when.
 

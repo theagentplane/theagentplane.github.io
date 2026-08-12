@@ -117,7 +117,7 @@ Give each `blog/slug.html` a unique-reader badge near the byline (not in the
 
 ```html
 <p class="post-meta" style="margin-top: 16px;">
-  <img src="https://visitor-badge.laobi.icu/badge?page_id=theagentplane.blog.slug&left_text=unique%20readers" alt="Unique reader count for this post" height="20" loading="lazy">
+  <img src="https://visitor-badge.laobi.icu/badge?page_id=theagentplane.blog.slug&left_text=unique%20readers" alt="Unique reader count for this post" height="14" loading="lazy">
 </p>
 ```
 

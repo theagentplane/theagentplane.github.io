@@ -1591,3 +1591,65 @@ footer .container {
     max-width: 160px;
   }
 }
+
+/* ============================================================
+   Newsletter subscribe block (js/subscribe.js)
+   ============================================================ */
+
+.subscribe-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  text-align: left;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 24px 28px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.subscribe-icon {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  color: var(--accent);
+}
+
+.subscribe-text {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.subscribe-text h3 {
+  margin: 0 0 4px;
+  font-size: 17px;
+  line-height: 1.3;
+}
+
+.subscribe-text p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--text-dim);
+  line-height: 1.5;
+}
+
+.subscribe-cta {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .subscribe-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 20px;
+  }
+
+  .subscribe-cta {
+    width: 100%;
+    text-align: center;
+  }
+}
